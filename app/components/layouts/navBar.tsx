@@ -6,7 +6,7 @@ interface NavBarProp {
 
 export const NavBar = ({navList}: NavBarProp) => {
     return (
-        <li className="">
+        <li className="hover:underline">
             <a href={navList.link}>
                 {navList.label}
             </a>
