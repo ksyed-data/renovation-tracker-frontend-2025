@@ -8,7 +8,7 @@ import { SearchBar } from "../main-page/searchBar"
 export const Dashboard = () => {
     return (
         <div className="flex-col h-full">
-            <div className={"flex-col h-120 bg-[url('public/background.png')] bg-no-repeat bg-cover"}>
+            <div className={"flex-col h-120 bg-[url('/background.png')] bg-no-repeat bg-cover"}>
                 <nav>
                         <div>
                             <ul className="flex space-x-5 p-3 text-white font-bold">
