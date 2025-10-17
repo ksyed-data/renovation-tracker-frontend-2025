@@ -1,12 +1,23 @@
-export const HomeMiniUI = () => {
+import type { HomeClickable } from "../types/homeClickable"
+
+interface HomeMiniUIProp {
+    miniUI: HomeClickable
+}
+
+
+
+export const HomeMiniUI = ({miniUI} : HomeMiniUIProp) => {
     return (
-        <ul>
-            <div className="flex-col bg-amber-800 h-full max-w-60 p-3 text-center">
-                <h1>Placeholder</h1>
-                <p>Image</p>
-                <h2>Street Address</h2>
-                <p>informations</p>
+        <li>
+            <div className="flex-col shadow-2xl h-full max-w-60 p-3 text-center">
+                <a href="/home">
+                <img src={miniUI.image}/>
+                <h1>{miniUI.streetAdress}</h1>
+                <p>Renovations: {miniUI.numRenovation}</p>
+                <p>{miniUI.numBedRoom} Beds</p>    
+                </a>
+                
             </div>
-        </ul>
+        </li>
     )
 }
