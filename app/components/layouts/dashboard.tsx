@@ -1,8 +1,8 @@
 import { NavButtonData } from "../dummy-data/nav-button-data"
-import { ExploreMore } from "./exploreMoreSection"
-import { NavBar } from "./navBar"
-import { ProjectSummary } from "./projectSummary"
-import { SearchBar } from "./searchBar"
+import { ExploreMore } from "../main-page/exploreMoreSection"
+import { NavBar } from "../main-page/navBar"
+import { ProjectSummary } from "../main-page/projectSummary"
+import { SearchBar } from "../main-page/searchBar"
 
 
 export const Dashboard = () => {
