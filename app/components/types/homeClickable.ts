@@ -1,9 +1,10 @@
 export interface HomeClickable {
-    id: number,
+    url: string,
     image: string,
     streetAdress: string,
-    houseType: string,
-    numBedRoom: number,
-    numBathRoom: number,
-    numRenovation: number,
+    description: string,
+    price: number,
+    bedroom: number,
+    bathroom: number,
+    yearBuilt: number,
 }

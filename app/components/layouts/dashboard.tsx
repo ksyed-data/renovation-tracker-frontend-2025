@@ -1,8 +1,8 @@
-import { NavButtonData } from "../dummy-data/nav-button-data"
-import { ExploreMore } from "../main-page/exploreMoreSection"
-import { NavBar } from "../main-page/navBar"
-import { ProjectSummary } from "../main-page/projectSummary"
-import { SearchBar } from "../main-page/searchBar"
+import { NavButtonData } from "../mock/NavButtonData"
+import { ExploreMore } from "../main-page/ExploreMore"
+import { NavBarFill } from "../main-page/NavBarFill"
+import { ProjectSummary } from "../main-page/ProjectSummary"
+import { SearchBar } from "../main-page/SearchBar"
 
 
 export const Dashboard = () => {
@@ -10,22 +10,18 @@ export const Dashboard = () => {
         <div className="flex-col h-full">
             <div className={"flex-col h-120 bg-[url('/background.png')] bg-no-repeat bg-cover"}>
                 <nav>
-                        <div>
-                            <ul className="flex space-x-5 p-3 text-white font-bold">
-                                {NavButtonData.map((nav) => (
-                                <NavBar navList={nav}/>
-                                ))}
-                            </ul>
+                        <div className="text-white">
+                            <NavBarFill />
                         </div>                     
                 </nav>
                 <SearchBar/>
             </div>
-            <div>
                 <ProjectSummary/>
-            </div>
-            <div>
+                    <div className="w-full py-10">
+                        <h1 className="text-gray-800 text-4xl p-3 font-bold text-center">Explore more renovations...</h1> 
+                        <p className="text-gray-500 text-2xl text-center">Check out some renovations.</p>
+                    </div>    
                 <ExploreMore/>
-            </div>
         </div>
     )
 }

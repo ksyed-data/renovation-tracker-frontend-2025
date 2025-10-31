@@ -1,4 +1,4 @@
-import type { NavButtonType } from "../types/nav-button-interface";
+import type { NavButtonType } from "../types/NavButtonInterface";
 
 export const NavButtonData : NavButtonType[] = [
     {
