@@ -1,16 +1,13 @@
 import type { NavButtonType } from "../types/NavButtonInterface";
 
 interface NavBarProp {
-    navList : NavButtonType;
+  navList: NavButtonType;
 }
 
-export const NavLink = ({navList}: NavBarProp) => {
-    return (
-        <li className="hover:underline">
-            <a href={navList.link}>
-                {navList.label}
-            </a>
-        </li>    
-    )
-}
-
+export const NavLink = ({ navList }: NavBarProp) => {
+  return (
+    <li className="hover:underline">
+      <a href={navList.link}>{navList.label}</a>
+    </li>
+  );
+};

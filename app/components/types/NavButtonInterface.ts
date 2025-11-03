@@ -1,4 +1,4 @@
 export interface NavButtonType {
-    label : string;
-    link : string;
+  label: string;
+  link: string;
 }

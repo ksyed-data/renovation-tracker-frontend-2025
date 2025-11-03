@@ -1,7 +1,3 @@
 export const RenovationContent = () => {
-    return (
-        <div>
-            Content data here or invalid link.
-        </div>
-    )
-}
+  return <div>Content data here or invalid link.</div>;
+};
