@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../components/layouts/welcome/welcome";
-import { Dashboard } from "../components/layouts/dashboard";
+import { Dashboard } from "~/components/layouts/Dashboard";
+import { BeforeAfterView } from "~/components/layouts/BeforeAfter";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,6 +10,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <Dashboard/>;
+export default function Listing() {
+ return <BeforeAfterView/>
 }
