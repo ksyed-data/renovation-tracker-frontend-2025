@@ -1,8 +1,8 @@
 import { NavButtonData } from "../mock/NavButtonData";
 import { ExploreMore } from "../main-page/ExploreMore";
 import { NavBarFill } from "../main-page/NavBarFill";
-import { ProjectSummary } from "../main-page/ProjectSummary";
-import { SearchBar } from "../main-page/SearchBar";
+import { ProjectSummary } from "../main-page/projectSummary";
+import { SearchBar } from "../main-page/searchBar";
 
 export const Dashboard = () => {
   return (
