@@ -1,6 +1,6 @@
 import React from "react";
-import { NavBar } from "./navBar";
-import { NavButtonData } from "../components/nav-button-data";
+import { NavBar } from "./NavBar";
+import { NavButtonData } from "./NavButtonData";
 
 export const NavMenu = () => {
   return (
@@ -14,11 +14,7 @@ export const NavMenu = () => {
         </ul>
 
         <div className="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="rounded-full border border-gray-300 bg-gray-100 px-4 py-1 pr-4 focus:ring-gray-400"
-          />
+          
         </div>
       </div>
     </header>

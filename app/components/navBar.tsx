@@ -1,4 +1,4 @@
-import type { NavButtonType } from "../components/nav-button-interface";
+import type { NavButtonType } from "./NavButtonInterface";
 
 interface NavBarProp {
     navList : NavButtonType;

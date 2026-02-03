@@ -1,4 +1,4 @@
-import type { NavButtonType } from "../components/nav-button-interface";
+import type { NavButtonType } from "./NavButtonInterface";
 
 export const NavButtonData : NavButtonType[] = [
     {
@@ -7,7 +7,7 @@ export const NavButtonData : NavButtonType[] = [
     },
     {
         label: "Renovation",
-        link: "/renovation"
+       link: "/renovation"
     },
     {
         label: "Before / After",

@@ -1,11 +1,11 @@
-import { NavMenu } from "../navMenu";
-import { mockProperties, getPhotosByPropertyId } from "../dummy-data";
-import { Kitchen } from "../kitchen";
-import { Bathroom } from "../bathroom";
-import { LivingRoom } from "../living-room";
-import { Bedroom } from "../bedroom";
-import { Basement } from "../basement";
-import { House } from "../house";
+import { NavMenu } from "../NavMenu";
+import { mockProperties, getPhotosByPropertyId } from "../DummyData";
+import { Kitchen } from "../Kitchen";
+import { Bathroom } from "../Bathroom";
+import { LivingRoom } from "../LivingRoom";
+import { Bedroom } from "../Bedroom";
+import { Basement } from "../Basement";
+import { House } from "../House";
 import { Link } from "react-router";
 
 export const BeforeAfterView = () => {
@@ -23,7 +23,6 @@ export const BeforeAfterView = () => {
     const renderRoom = (photo: any) => {
         const type = photo.room_type || "";
         const linkTo = `/before-after/${photo.room_type}`;
-        const roomType= "Living Room";
         if (type.toLowerCase() == "house") {
             return (
                 <Link to={linkTo}>

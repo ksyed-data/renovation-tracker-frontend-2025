@@ -1,7 +1,7 @@
 import type { Route } from "./+types/carousel";
-import { Carousel } from "~/components/carousel";
-import { mockProperties, getPhotosByPropertyAndRoomType } from "~/components/dummy-data";
-import { NavMenu } from "~/components/navMenu";
+import { Carousel } from "~/components/Carousel";
+import { mockProperties, getPhotosByPropertyAndRoomType } from "~/components/DummyData";
+import { NavMenu } from "~/components/NavMenu";
 import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {

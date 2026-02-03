@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 
+
+type KitchenProps = {
+    photo: any;
+    address: string;
+    onClick: () => void
+}
+
 export const Kitchen = ({
     photo,
     address,
     onClick
-}: {
-    photo: any;
-    address: string;
-    onClick: () => void
-}) => {
-    const roomType = "Kitchen";
+}: KitchenProps) => {
+    const roomType = "House";
 
+    
     return (
         <div className="flex flex-col md:flex-row bg-gray-50 rounded-lg overflow-hidden">
             <div className="md:w-1/2">

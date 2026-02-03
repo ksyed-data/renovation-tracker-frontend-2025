@@ -8,7 +8,3 @@ export const Dashboard = () => {
    </div>;
 }
 
-// website 
-// website.com/listing/456/before-after
-// website.com/
-// website.com/beforeafter/456

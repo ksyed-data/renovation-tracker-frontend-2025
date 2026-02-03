@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 
+type HouseProps = {
+    photo: any;
+    address: string;
+    onClick: () => void
+}
+
 export const House = ({
     photo,
     address,
     onClick
-}: {
-    photo: any;
-    address: string;
-    onClick: () => void
-}) => {
+}: HouseProps) => {
     const roomType = "House";
 
     return (
-        <div className="bg-gray-50 rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row">
+        <div className="bg-gray-50 rounded-lg overflow-hidden flex flex-col md:flex-row">
                 <div className="md:w-1/2">
                 <img
                     src={photo.url}
@@ -22,7 +23,7 @@ export const House = ({
                     onClick={onClick}
                 />
                 </div>
-                <div className="md:w-1/2 p-6 flex items-center">
+                <div className="md:w-1/2 p-6 flex items-start">
                     <div>
                         <h4 className="font-semibold text-xl mb-3">
                             {roomType} Renovation
@@ -33,6 +34,5 @@ export const House = ({
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
