@@ -1,36 +1,36 @@
-# Angela Pantigozo-Cuellar 
-Virginia Commonwealth University 
-Graduating May 2026
-Major: Computer Science 
-Front-End Developer
+# Angela Pantigozo-Cuellar
 
-
-
-# Steven Zheng 
 Virginia Commonwealth University
-Graduating May 2026 
+Graduating May 2026
 Major: Computer Science
 Front-End Developer
 
+# Steven Zheng
+
+Virginia Commonwealth University
+Graduating May 2026
+Major: Computer Science
+Front-End Developer
 
 # Jeremiah Robert
-Virginia Commonwealth University 
+
+Virginia Commonwealth University
 Graduating May 2026
 Major: Computer Science
-Minor: Artificial Intelligence 
+Minor: Artificial Intelligence
 Back-End Developer
 
+# Jin Lee
 
-# Jin Lee 
-Virginia Commonwealth University 
+Virginia Commonwealth University
 Graduating December 2026
 Major: Computer Science
 Back-End Developer
 
-
 # Victoria Castagnola
-Virginia Commonwealth University 
+
+Virginia Commonwealth University
 Graduating May 2026
 Major: Computer Science
-Minor: Business 
-Project Manager 
+Minor: Business
+Project Manager
