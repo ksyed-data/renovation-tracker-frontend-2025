@@ -3,7 +3,7 @@ import type { NavButtonType } from "../types/NavButtonInterface";
 export const NavButtonData: NavButtonType[] = [
   {
     label: "Dashboard",
-    link: "/dashbord",
+    link: "/",
   },
   {
     label: "Renovation",

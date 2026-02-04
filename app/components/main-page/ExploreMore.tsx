@@ -8,7 +8,7 @@ export const ExploreMore = () => {
       <div className="w-full p-3">
         <ul className="grid p-3 space-x-1 justify-center grid-cols-6">
           {HomeData.map((data) => (
-            <HomeMiniUI miniUI={data} />
+            <HomeMiniUI key={data.url} miniUI={data} />
           ))}
         </ul>
       </div>
