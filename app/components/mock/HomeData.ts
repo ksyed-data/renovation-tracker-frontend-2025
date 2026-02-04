@@ -2,7 +2,7 @@ import type { HomeClickable } from "../types/HomeClickable";
 
 export const HomeData: HomeClickable[] = [
   {
-    url: "placeholder.com",
+    url: "placeholder0.com",
     image: "public/background.png",
     streetAdress: "something st",
     description: "Description placeholder.",
@@ -12,7 +12,7 @@ export const HomeData: HomeClickable[] = [
     yearBuilt: 2009,
   },
   {
-    url: "placeholder.com",
+    url: "placeholder1.com",
     image: "public/background.png",
     streetAdress: "something st",
     description: "Description placeholder.",
@@ -22,7 +22,7 @@ export const HomeData: HomeClickable[] = [
     yearBuilt: 2009,
   },
   {
-    url: "placeholder.com",
+    url: "placeholder2.com",
     image: "public/background.png",
     streetAdress: "something st",
     description: "Description placeholder.",
@@ -32,7 +32,7 @@ export const HomeData: HomeClickable[] = [
     yearBuilt: 2009,
   },
   {
-    url: "placeholder.com",
+    url: "placeholder3.com",
     image: "public/background.png",
     streetAdress: "something st",
     description: "Description placeholder.",
@@ -42,7 +42,7 @@ export const HomeData: HomeClickable[] = [
     yearBuilt: 2009,
   },
   {
-    url: "placeholder.com",
+    url: "placeholder4.com",
     image: "public/background.png",
     streetAdress: "something st",
     description: "Description placeholder.",

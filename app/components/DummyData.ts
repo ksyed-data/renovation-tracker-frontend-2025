@@ -35,31 +35,33 @@ export const mockProperties: Property[] = [
     id: 1,
     url: "https://www.bhg.com/thmb/3Vf9GXp3T-adDlU6tKpTbb-AEyE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg",
     address: "123 Main Street, Springfield, IL 62701",
-    description: "Beautiful 3-bedroom home with modern renovations throughout. Features updated kitchen, bathrooms, and hardwood floors.",
+    description:
+      "Beautiful 3-bedroom home with modern renovations throughout. Features updated kitchen, bathrooms, and hardwood floors.",
     created_at: "2024-01-15T10:30:00Z",
-    updated_at: "2024-01-15T10:30:00Z"
+    updated_at: "2024-01-15T10:30:00Z",
   },
   {
     id: 2,
     url: "https://example.com/listing/67890",
     address: "456 Oak Avenue, Riverside, CA 92501",
-    description: "Spacious family home with recent bathroom and kitchen renovations. Perfect for growing families.",
+    description:
+      "Spacious family home with recent bathroom and kitchen renovations. Perfect for growing families.",
     created_at: "2024-01-20T14:45:00Z",
-    updated_at: "2024-01-20T14:45:00Z"
+    updated_at: "2024-01-20T14:45:00Z",
   },
   {
     id: 3,
     url: "https://example.com/listing/54321",
     address: "789 Pine Road, Boulder, CO 80301",
-    description: "Charming cottage with complete bedroom renovation and updated living spaces. Mountain views included.",
+    description:
+      "Charming cottage with complete bedroom renovation and updated living spaces. Mountain views included.",
     created_at: "2024-01-25T09:15:00Z",
-    updated_at: "2024-01-25T09:15:00Z"
-  }
+    updated_at: "2024-01-25T09:15:00Z",
+  },
 ];
 
 export const mockPhotos: Photo[] = [
-  
-  // Property 1 
+  // Property 1
 
   {
     id: 1,
@@ -68,7 +70,7 @@ export const mockPhotos: Photo[] = [
     room_type: "house",
     stage: "after",
     created_at: "2024-01-15T10:50:00Z",
-    updated_at: "2024-01-15T10:50:00Z"
+    updated_at: "2024-01-15T10:50:00Z",
   },
   {
     id: 2,
@@ -77,7 +79,7 @@ export const mockPhotos: Photo[] = [
     room_type: "kitchen",
     stage: "after",
     created_at: "2024-01-15T10:35:00Z",
-    updated_at: "2024-01-15T10:35:00Z"
+    updated_at: "2024-01-15T10:35:00Z",
   },
   {
     id: 3,
@@ -86,7 +88,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bathroom",
     stage: "after",
     created_at: "2024-01-15T10:40:00Z",
-    updated_at: "2024-01-15T10:40:00Z"
+    updated_at: "2024-01-15T10:40:00Z",
   },
   {
     id: 4,
@@ -95,7 +97,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bedroom",
     stage: "after",
     created_at: "2024-01-15T10:45:00Z",
-    updated_at: "2024-01-15T10:45:00Z"
+    updated_at: "2024-01-15T10:45:00Z",
   },
   {
     id: 5,
@@ -104,7 +106,7 @@ export const mockPhotos: Photo[] = [
     room_type: "living_room",
     stage: "after",
     created_at: "2024-01-15T10:50:00Z",
-    updated_at: "2024-01-15T10:50:00Z"
+    updated_at: "2024-01-15T10:50:00Z",
   },
   // Before images for Property 1
   {
@@ -114,7 +116,7 @@ export const mockPhotos: Photo[] = [
     room_type: "house",
     stage: "before",
     created_at: "2024-01-15T10:50:00Z",
-    updated_at: "2024-01-15T10:50:00Z"
+    updated_at: "2024-01-15T10:50:00Z",
   },
   {
     id: 7,
@@ -123,7 +125,7 @@ export const mockPhotos: Photo[] = [
     room_type: "kitchen",
     stage: "before",
     created_at: "2024-01-15T10:35:00Z",
-    updated_at: "2024-01-15T10:35:00Z"
+    updated_at: "2024-01-15T10:35:00Z",
   },
   {
     id: 8,
@@ -132,7 +134,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bathroom",
     stage: "before",
     created_at: "2024-01-15T10:40:00Z",
-    updated_at: "2024-01-15T10:40:00Z"
+    updated_at: "2024-01-15T10:40:00Z",
   },
   {
     id: 9,
@@ -141,7 +143,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bedroom",
     stage: "before",
     created_at: "2024-01-15T10:45:00Z",
-    updated_at: "2024-01-15T10:45:00Z"
+    updated_at: "2024-01-15T10:45:00Z",
   },
   {
     id: 10,
@@ -150,11 +152,10 @@ export const mockPhotos: Photo[] = [
     room_type: "living_room",
     stage: "before",
     created_at: "2024-01-15T10:50:00Z",
-    updated_at: "2024-01-15T10:50:00Z"
+    updated_at: "2024-01-15T10:50:00Z",
   },
 
-  
-  // Property 2 
+  // Property 2
   {
     id: 11,
     property_id: 2,
@@ -162,7 +163,7 @@ export const mockPhotos: Photo[] = [
     room_type: "kitchen",
     stage: "after",
     created_at: "2024-01-20T14:50:00Z",
-    updated_at: "2024-01-20T14:50:00Z"
+    updated_at: "2024-01-20T14:50:00Z",
   },
   {
     id: 12,
@@ -171,7 +172,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bathroom",
     stage: "after",
     created_at: "2024-01-20T14:55:00Z",
-    updated_at: "2024-01-20T14:55:00Z"
+    updated_at: "2024-01-20T14:55:00Z",
   },
   {
     id: 13,
@@ -180,7 +181,7 @@ export const mockPhotos: Photo[] = [
     room_type: "basement",
     stage: "after",
     created_at: "2024-01-20T15:00:00Z",
-    updated_at: "2024-01-20T15:00:00Z"
+    updated_at: "2024-01-20T15:00:00Z",
   },
   // Before for Property 2
   {
@@ -190,7 +191,7 @@ export const mockPhotos: Photo[] = [
     room_type: "kitchen",
     stage: "before",
     created_at: "2024-01-20T14:50:00Z",
-    updated_at: "2024-01-20T14:50:00Z"
+    updated_at: "2024-01-20T14:50:00Z",
   },
   {
     id: 15,
@@ -199,7 +200,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bathroom",
     stage: "before",
     created_at: "2024-01-20T14:55:00Z",
-    updated_at: "2024-01-20T14:55:00Z"
+    updated_at: "2024-01-20T14:55:00Z",
   },
   {
     id: 16,
@@ -208,9 +209,9 @@ export const mockPhotos: Photo[] = [
     room_type: "basement",
     stage: "before",
     created_at: "2024-01-20T15:00:00Z",
-    updated_at: "2024-01-20T15:00:00Z"
+    updated_at: "2024-01-20T15:00:00Z",
   },
-  // Property 3 
+  // Property 3
   {
     id: 17,
     property_id: 3,
@@ -218,7 +219,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bedroom",
     stage: "after",
     created_at: "2024-01-25T09:20:00Z",
-    updated_at: "2024-01-25T09:20:00Z"
+    updated_at: "2024-01-25T09:20:00Z",
   },
   {
     id: 18,
@@ -227,7 +228,7 @@ export const mockPhotos: Photo[] = [
     room_type: "living_room",
     stage: "after",
     created_at: "2024-01-25T09:25:00Z",
-    updated_at: "2024-01-25T09:25:00Z"
+    updated_at: "2024-01-25T09:25:00Z",
   },
   // Before for Property 3
   {
@@ -237,7 +238,7 @@ export const mockPhotos: Photo[] = [
     room_type: "bedroom",
     stage: "before",
     created_at: "2024-01-25T09:20:00Z",
-    updated_at: "2024-01-25T09:20:00Z"
+    updated_at: "2024-01-25T09:20:00Z",
   },
   {
     id: 20,
@@ -246,8 +247,8 @@ export const mockPhotos: Photo[] = [
     room_type: "living_room",
     stage: "before",
     created_at: "2024-01-25T09:25:00Z",
-    updated_at: "2024-01-25T09:25:00Z"
-  }
+    updated_at: "2024-01-25T09:25:00Z",
+  },
 ];
 
 export const mockRenovations: Renovation[] = [
@@ -261,7 +262,7 @@ export const mockRenovations: Renovation[] = [
     basement: false,
     house: true,
     created_at: "2024-01-15T11:00:00Z",
-    updated_at: "2024-01-15T11:00:00Z"
+    updated_at: "2024-01-15T11:00:00Z",
   },
   {
     id: 2,
@@ -273,7 +274,7 @@ export const mockRenovations: Renovation[] = [
     basement: true,
     house: true,
     created_at: "2024-01-20T15:30:00Z",
-    updated_at: "2024-01-20T15:30:00Z"
+    updated_at: "2024-01-20T15:30:00Z",
   },
   {
     id: 3,
@@ -285,28 +286,37 @@ export const mockRenovations: Renovation[] = [
     basement: false,
     house: true,
     created_at: "2024-01-25T10:00:00Z",
-    updated_at: "2024-01-25T10:00:00Z"
-  }
+    updated_at: "2024-01-25T10:00:00Z",
+  },
 ];
 
 export const getPhotosByPropertyId = (propertyId: number): Photo[] => {
-  return mockPhotos.filter(photo => photo.property_id == propertyId);
+  return mockPhotos.filter((photo) => photo.property_id == propertyId);
 };
 
-export const getRenovationByPropertyId = (propertyId: number): Renovation | undefined => {
-  return mockRenovations.find(renovation => renovation.property_id == propertyId);
+export const getRenovationByPropertyId = (
+  propertyId: number,
+): Renovation | undefined => {
+  return mockRenovations.find(
+    (renovation) => renovation.property_id == propertyId,
+  );
 };
 
 export const getPhotosByRoomType = (roomType: string): Photo[] => {
-  return mockPhotos.filter(photo => photo.room_type == roomType);
+  return mockPhotos.filter((photo) => photo.room_type == roomType);
 };
 
-export const getPhotosByPropertyAndRoomType = (propertyId: number, roomType: string): Photo[] => {
-  return mockPhotos.filter(photo => photo.property_id == propertyId && photo.room_type == roomType);
+export const getPhotosByPropertyAndRoomType = (
+  propertyId: number,
+  roomType: string,
+): Photo[] => {
+  return mockPhotos.filter(
+    (photo) => photo.property_id == propertyId && photo.room_type == roomType,
+  );
 };
 
 export const getPropertiesWithRenovations = () => {
-  return mockProperties.map(property => ({
+  return mockProperties.map((property) => ({
     id: property.id,
     url: property.url,
     address: property.address,
@@ -314,6 +324,6 @@ export const getPropertiesWithRenovations = () => {
     updated_at: property.updated_at,
 
     renovation: getRenovationByPropertyId(property.id),
-    photos: getPhotosByPropertyId(property.id)
+    photos: getPhotosByPropertyId(property.id),
   }));
 };
