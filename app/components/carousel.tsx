@@ -29,14 +29,14 @@ export const Carousel = ({images, roomType, address}: CarouselProps)=> {
    
 
     return (
-        <div className="relative flex item-center absolute w-full max-w-4xl mx-auto">
+        <div className="relative margin-auto item-center absolute w-full max-w-2xl mx-auto">
             <div className="relative">
                 <img
                     src={currentImage.url}
                     alt={`${address} - ${displayRoomType} - ${currentImage.stage}`}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full bg-grey h-full center object-cover rounded-lg"
                 />
-                <div className="top-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded">
+                <div className="bg-black bg-opacity-50 text-white max-w-sm mx-auto px-3 py-1 rounded">
                     {stageLabel}
                 </div>
             
@@ -44,7 +44,7 @@ export const Carousel = ({images, roomType, address}: CarouselProps)=> {
                 <>
                     <button
                         onClick={prevImage}
-                        className="absolute item-center justify left-2 top-1/2  -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                        className="absolute left-2 top-1/2 mx-auto -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
                     >
                         ‹
                     </button>

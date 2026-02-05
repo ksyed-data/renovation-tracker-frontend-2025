@@ -4,15 +4,17 @@ import { Link } from "react-router-dom";
 type KitchenProps = {
     photo: any;
     address: string;
+    roomType: string;
     onClick: () => void
 }
 
 export const Kitchen = ({
     photo,
     address,
+    roomType,
     onClick
 }: KitchenProps) => {
-    const roomType = "House";
+    const RoomDetail = "Kitchen";
 
     
     return (
@@ -20,7 +22,7 @@ export const Kitchen = ({
             <div className="md:w-1/2">
                 <img
                     src={photo.url}
-                    alt={address + " - " + roomType}
+                    alt={address + " - " + RoomDetail}
                     className="w-full h-64 md:h-full object-cover hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                     onClick={onClick}
                 />
@@ -28,10 +30,10 @@ export const Kitchen = ({
 
             <div className="md:w-1/2 p-6">
                 <h4 className="font-semibold text-xl mb-3">
-                    {roomType} Renovation
+                    {RoomDetail} Renovation
                 </h4>
                 <p className="text-gray-600 mb-4">
-                    Detailed description of the {roomType} renovation work completed.
+                    Detailed description of the {RoomDetail} renovation work completed.
                     This includes all the improvements and updates made to enhance the space.
                 </p>
             </div>

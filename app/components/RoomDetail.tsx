@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 type BedroomProps = {
     photo: any;
     address: string;
-    roomType:string;
+    roomType: string;
     onClick: () => void
 }
     export const Bedroom = ({
         photo,
         address,
-        onClick
+        onClick,
     }: BedroomProps) => {
    const RoomDetail = "Bedroom";
 
