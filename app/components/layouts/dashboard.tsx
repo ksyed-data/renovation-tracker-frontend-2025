@@ -2,8 +2,10 @@ import { ExploreMore } from "../main-page/ExploreMore";
 import { ProjectSummary } from "../main-page/ProjectSummary";
 import { SearchBar } from "../main-page/SearchBar";
 import { NavMenu } from "../NavMenu";
+import { testGet } from "~/BFF/API/test";
 
 export const Dashboard = () => {
+  testGet();
   return (
     <div className="flex-col h-full">
       <div className="flex-col h-140 bg-[url('/background.png')] bg-bottom bg-no-repeat bg-cover">
