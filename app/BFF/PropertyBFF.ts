@@ -1,22 +1,11 @@
 import { BackendClient } from "./API/BackendClient";
 import type { PropertyInterface } from "~/components/types/PropertyInterface";
 
-export async function getListing(
-  listingURL: string,
-): Promise<PropertyInterface> {
-  const normalizeURL = listingURL.trim().toLowerCase();
+//http://127.0.0.1:8000/listings/?limit=2
 
-  const { data: resolved } = await BackendClient.get("/properties/resolve", {
-    params: { url: normalizeURL },
-  });
 
-  //fetch propery data
-  const { data: property } = await BackendClient.get(
-    `/properties/${resolved.id}`,
-  );
+export async function getListing(id: number) {
+  const { data } = await BackendClient.get(`/listings/${id}`);
 
-  //aggregate for frontend
-  return {
-    url: property.url,
-  };
+  return data;
 }

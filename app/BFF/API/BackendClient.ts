@@ -3,7 +3,7 @@ import axios from "axios"
 //axio instance 
 export const BackendClient = axios.create({
     //url, change base on your hosting port
-    baseURL: "https://localhost:3000",
+    baseURL: "http://127.0.0.1:8000",
     headers: {
         "Content-Type": "application/JSON"
     }
