@@ -12,6 +12,7 @@
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
     "axios": "^1.13.4",
+    "baseline-browser-mapping": "^2.9.19",
     "isbot": "^5.1.31",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -28,5 +29,8 @@
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "bundleDependencies": [
+    "baseline-browser-mapping"
+  ]
 }

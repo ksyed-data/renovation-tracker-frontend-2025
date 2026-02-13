@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getListing } from "~/BFF/PropertyBFF";
+import { ReadListing } from "~/BFF/WebBFF";
 import type { PropertyInterface } from "../types/PropertyInterface";
 
 
@@ -16,7 +16,7 @@ export const SearchField = () => {
       setLoading(true);
       setError("");
       
-      const result = await getListing(parseInt(listingURL));
+      const result = await ReadListing(parseInt(listingURL));
       setProperty(result);
       console.log(result);
 
