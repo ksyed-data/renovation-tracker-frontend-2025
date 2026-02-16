@@ -14,7 +14,7 @@ export async function CreateListing(testPayload: ListingInterface) {
   }
 
 }
-//Get the listing base on the URL
+//Get the listing and renovation data base on the URL
 export async function GetListingWithRenovation(url: string) {
   try {
     const id:number = await GetListingIdByURL(url);
