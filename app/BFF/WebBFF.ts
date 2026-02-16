@@ -1,12 +1,8 @@
-import type { HomeListing } from "~/components/types/HomeListing";
 import { AxioInstance } from "./API/AxioInstance";
-import type { PropertyInterface } from "~/components/types/PropertyInterface";
+import { GetListingIdByURL } from "./WebBFFHelper";
 
-//http://127.0.0.1:8000/ hosting address
-
-//create listing
-//Confirmed that it works
-export async function CreateListing(testPayload: HomeListing) {
+//Create a Listing. Format should match HomeListing.ts interface. NOTE: URL and Street Address must be unique otherwise it will throw an ERROR.
+export async function CreateListing(testPayload: ListingInterface) {
   try {
     const { data } = await AxioInstance.post("/listings/", testPayload);
     console.log(data);
@@ -18,11 +14,27 @@ export async function CreateListing(testPayload: HomeListing) {
   }
 
 }
-
-//read Reading listing
-export async function ReadListing(id: number) {
+//Get the listing base on the URL
+export async function GetListingWithRenovation(url: string) {
   try {
-    const { data } = await AxioInstance.get(`/listings/${id}`);
+    const id:number = await GetListingIdByURL(url);
+    const {data: listingData} = await AxioInstance.get<ListingInterface>(`/listings/${id}`);
+    const {data: renovationData} = await AxioInstance.get<RenovationListingInterface[]>(`/renovations/${id}/read`)
+    return {
+      listing: listingData,
+      renovation: renovationData[0]
+    };  
+  }
+  catch (error) {
+    console.error("GET Listing failed:", error)
+    throw error;
+  }
+}
+
+//Read all of the listing up to a limit of 100. Return every single listing data.
+export async function ReadListing(id: number = 100) {
+  try {
+    const { data } = await AxioInstance.get(`/listings/`, {params: {limit:100}});
     return data;
   }
   catch (error) {
@@ -32,9 +44,10 @@ export async function ReadListing(id: number) {
 
 }
 
-//update listing
-export async function UpdateListing(id: number, updateListing: HomeListing) {
+//Update listing information base on URL as input. Payload should be type HomeListing. 
+export async function UpdateListing(url: string, updateListing: ListingInterface) {
   try {
+    const id:number = await GetListingIdByURL(url);
     const { data } = await AxioInstance.put(`/listings/${id}`, updateListing);
     return data;    
   }
@@ -45,9 +58,10 @@ export async function UpdateListing(id: number, updateListing: HomeListing) {
 
 }
 
-//delete relevant entities
-export async function DeleteListing(id: number) {
+//Delete the listing base on the URL.
+export async function DeleteListing(url: string) {
   try {
+    const id:number = await GetListingIdByURL(url);
     const { data } = await AxioInstance.delete(`/listings/${id}`);
     return data;
   }
