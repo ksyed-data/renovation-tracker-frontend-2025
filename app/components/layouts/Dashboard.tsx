@@ -1,4 +1,4 @@
-import { CreateListing, DeleteListing, GetListingWithRenovation, ReadListing, UpdateListing } from "~/BFF/WebBFF";
+import {GetListingWithRenovation} from "~/BFF/WebBFF";
 import { ExploreMore } from "../main-page/ExploreMore";
 import { ProjectSummary } from "../main-page/ProjectSummary";
 import { SearchBar } from "../main-page/SearchBar";
@@ -7,23 +7,6 @@ import { useEffect } from "react";
 
 
 export const Dashboard = () => {
-    //This is purely for testing purpose of BFF
-    //Start of testing for BFF function 
-    useEffect(() => {
-    const runTest = async () => {
-      try {
-        const result = await GetListingWithRenovation("/home.com/test1");
-        console.log("GET success:", result);
-      } catch (err) {
-        console.error("GET failed:", err);
-      }
-    };
-
-    runTest();
-  }, []);
-  //End of testing for BFF Function
-
-
 
   return (
     <div className="flex-col h-full">

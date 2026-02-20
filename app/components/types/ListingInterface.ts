@@ -1,5 +1,6 @@
 interface ListingInterface {
     url: string;
+    image: string;
     address: string;
     description: string;
     price: number;
