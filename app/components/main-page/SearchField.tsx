@@ -2,12 +2,10 @@ import { useState } from "react";
 import { ReadListing } from "~/BFF/WebBFF";
 import type { PropertyInterface } from "../types/PropertyInterface";
 
-
-
 export const SearchField = () => {
-  const[listingURL, setListingURL] = useState("");
-  const[loading, setLoading] = useState(false);
-  const[property, setProperty] = useState<PropertyInterface | null>(null);
+  const [listingURL, setListingURL] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [property, setProperty] = useState<PropertyInterface | null>(null);
   const [error, setError] = useState("");
 
   //function to call the axios
@@ -15,20 +13,16 @@ export const SearchField = () => {
     try {
       setLoading(true);
       setError("");
-      
-      const result = await ReadListing(parseInt(listingURL));
-      setProperty(result);
-      console.log(result);
 
-    }
-    catch {
+      const result = await ReadListing(parseInt(listingURL));
+      setProperty(result[0]);
+      console.log(result);
+    } catch {
       setError("Failed to load property");
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="flex justify-center opacity-85">
@@ -39,7 +33,10 @@ export const SearchField = () => {
         value={listingURL}
         onChange={(e) => setListingURL(e.target.value)}
       />
-      <button className="bg-gray-500 text-white p-2 rounded-r-lg hover:bg-gray-400 " onClick={handleSearch}>
+      <button
+        className="bg-gray-500 text-white p-2 rounded-r-lg hover:bg-gray-400 "
+        onClick={handleSearch}
+      >
         Search
       </button>
 

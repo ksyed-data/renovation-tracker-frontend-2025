@@ -1,3 +1,4 @@
+import type { ListingInterface } from "../types/ListingInterface";
 
 interface HomeMiniUIProp {
   miniUI: ListingInterface;

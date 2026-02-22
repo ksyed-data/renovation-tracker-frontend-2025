@@ -1,4 +1,4 @@
-
+import type { ListingInterface } from "../types/ListingInterface";
 
 export const HomeData: ListingInterface[] = [
   {

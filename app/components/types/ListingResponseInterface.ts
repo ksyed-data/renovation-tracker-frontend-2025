@@ -1,4 +1,4 @@
-export interface ListingInterface {
+export interface ListingResponseInterface {
   url: string;
   image: string;
   address: string;
@@ -7,4 +7,5 @@ export interface ListingInterface {
   bedroom: number;
   bathroom: number;
   year_built: number;
+  listing_id: number;
 }
