@@ -6,14 +6,6 @@ export const NavButtonData: NavButtonType[] = [
     link: "/",
   },
   {
-    label: "Before / After",
-    link: "/before-after/",
-  },
-  {
-    label: "User-Feedback",
-    link: "/user-feedback",
-  },
-  {
     label: "Contacts",
     link: "/contacts",
   },
