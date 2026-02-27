@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBar } from "./NavBar";
+import { NavBar } from "./navBar";
 import { NavButtonData } from "./NavButtonData";
 
 export const NavMenu = () => {

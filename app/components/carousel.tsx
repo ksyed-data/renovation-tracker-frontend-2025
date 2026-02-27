@@ -25,18 +25,21 @@ export const Carousel = ({images, roomType, address}: CarouselProps)=> {
     let stageLabel = currentImage.stage === "before" ? "Before" : "After";
     
 
+    const carouselRoom = roomType.split("_").map(room => room.charAt(0).toUpperCase() + room.slice(1)).join(" ");
+
+    /*
     let displayRoomType = roomType === "living_room" ? "Living Room" : roomType;
-   
+    */
 
     return (
         <div className="relative margin-auto item-center absolute w-full max-w-2xl mx-auto">
             <div className="relative">
                 <img
                     src={currentImage.url}
-                    alt={`${address} - ${displayRoomType} - ${currentImage.stage}`}
+                    alt={`${address} - ${carouselRoom} - ${currentImage.stage}`}
                     className="w-full bg-grey h-full center object-cover rounded-lg"
                 />
-                <div className="bg-black bg-opacity-50 text-white max-w-sm mx-auto px-3 py-1 rounded">
+                <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white max-w-sm mx-auto px-3 py-1 rounded">
                     {stageLabel}
                 </div>
             
@@ -62,7 +65,7 @@ export const Carousel = ({images, roomType, address}: CarouselProps)=> {
                 {images.map((_, index) => {
                     
                     
-                    let buttonClass = index === currentIndex ? "bg-black" : "bg-grey";
+                    let buttonClass = index === currentIndex ? "bg-gray-300" : "bg-black";
                     return (
                         <button type="button"
                             key={index}
@@ -73,9 +76,9 @@ export const Carousel = ({images, roomType, address}: CarouselProps)=> {
                 })}
             </div>
             <div className="mt-6 text-center">
-                <h3 className="text-xl font-semibold mb-2">{displayRoomType} Renovation</h3>
+                <h3 className="text-xl font-semibold mb-2">{carouselRoom} Renovation</h3>
                 <p className="text-gray-600">
-                    Detailed description of the {displayRoomType} renovation work completed.
+                    Detailed description of the {roomType} renovation work completed.
                     This includes all the improvements and updates made to enhance the space.
                 </p>
             </div>

@@ -1,12 +1,13 @@
-import { NavMenu } from "../NavMenu";
+import { NavMenu } from "../navMenu";
 import { mockProperties, getPhotosByPropertyId } from "../DummyData";
-import { Kitchen } from "../Kitchen";
-import { Bathroom } from "../Bathroom";
+import { Kitchen } from "../kitchen";
+import { Bathroom } from "../bathroom";
 import { LivingRoom } from "../LivingRoom";
-import { Bedroom } from "../Bedroom";
-import { Basement } from "../Basement";
-import { House } from "../House";
+import { Bedroom } from "../bedroom";
+import { Basement } from "../basement";
+import { House } from "../house";
 import { Link } from "react-router";
+import { RoomDetail } from "../RoomDetail";
 
 export const BeforeAfterView = () => {
     const sampleProperty = mockProperties[0];
@@ -16,10 +17,14 @@ export const BeforeAfterView = () => {
         if (b == "house") return 1;
         return 0;
     });
+
+
+    /*
     const housePhoto = propertyPhotos.find(p => p.room_type && p.room_type.toLowerCase() == 'house');
 
     
  
+
     const renderRoom = (photo: any) => {
         const type = photo.room_type || "";
         const linkTo = `/before-after/${photo.room_type}`;
@@ -29,8 +34,7 @@ export const BeforeAfterView = () => {
                     <House
                         photo={photo}
                         address={sampleProperty.address}
-                        onClick={() => {}}
-                    />
+                        onClick={() => { } } roomType={""}                    />
                 </Link>
             );
         }
@@ -40,8 +44,7 @@ export const BeforeAfterView = () => {
                     <Kitchen
                         photo={photo}
                         address={sampleProperty.address}
-                        onClick={() => {}}
-                    />
+                        onClick={() => { } } roomType={""}                    />
                 </Link>
             );
         }
@@ -51,8 +54,7 @@ export const BeforeAfterView = () => {
                     <Bathroom
                         photo={photo}
                         address={sampleProperty.address}
-                        onClick={() => {}}
-                    />
+                        onClick={() => { } } roomType={""}                    />
                 </Link>
             );
         }
@@ -73,8 +75,7 @@ export const BeforeAfterView = () => {
                     <Bedroom
                         photo={photo}
                         address={sampleProperty.address}
-                        onClick={() => {}}
-                    />
+                        onClick={() => { } } roomType={""}                    />
                 </Link>
             );
         }
@@ -84,13 +85,14 @@ export const BeforeAfterView = () => {
                     <Basement
                         photo={photo}
                         address={sampleProperty.address}
-                        onClick={() => {}}
-                    />
+                        onClick={() => { } } roomType={""}                    />
                 </Link>
             );
         }
         return null;
     };
+
+    */
 
 
 
@@ -117,10 +119,24 @@ export const BeforeAfterView = () => {
                     <div className="space-y-6">
                         {uniqueRoomTypes.map((roomType) => {
                             const photo = propertyPhotos.find(p => p.room_type == roomType);
-                            if (photo) {
-                                return <div key={roomType}>{renderRoom(photo)}</div>;
-                            }
-                            return null;
+                            if (!photo){
+                                return null;
+                            }  
+                                
+
+                        
+                                return( <div key={roomType}>
+                                    <Link to={`/before-after/${roomType}`}>
+                                    <RoomDetail
+                                    photo={photo}
+                                    address={sampleProperty.address}
+                                    roomType={roomType}
+                                    onClick={() => {}}
+                                    />
+                                    </Link>
+                                </div>
+                                );
+                            
                         })}
                     </div>
                 </div>

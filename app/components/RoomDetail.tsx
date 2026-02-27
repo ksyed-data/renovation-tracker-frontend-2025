@@ -1,21 +1,20 @@
 import { Link } from "react-router-dom";
 
 
-
-type BedroomProps = {
+type RoomDetailProps = {
     photo: any;
     address: string;
     roomType: string;
     onClick: () => void
 }
-    export const Bedroom = ({
+    export const RoomDetail = ({
         photo,
         address,
         onClick,
-    }: BedroomProps) => {
-   const RoomDetail = "Bedroom";
+        roomType,
+    }: RoomDetailProps) => {
 
-
+   const formatRoom = roomType.split("_").map(room => room.charAt(0).toUpperCase() + room.slice(1)).join(" ");
 
 
     return (
@@ -23,7 +22,7 @@ type BedroomProps = {
             <div className="md:w-1/2">
                 <img
                     src={photo.url}
-                    alt={address + " - " + RoomDetail}
+                    alt={address + " - " + formatRoom}
                     className="w-full h-64 md:h-full object-cover hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                     onClick={onClick}
                 />
@@ -31,10 +30,10 @@ type BedroomProps = {
 
             <div className="md:w-1/2 p-6">
                 <h4 className="font-semibold text-xl mb-3">
-                    {RoomDetail} Renovation
+                    {formatRoom} Renovation
                 </h4>
                 <p className="text-gray-600 mb-4">
-                    Detailed description of the {RoomDetail} renovation work completed.
+                    Detailed description of the {roomType} renovation work completed.
                     This includes all the improvements and updates made to enhance the space.
                 </p>
             </div>
