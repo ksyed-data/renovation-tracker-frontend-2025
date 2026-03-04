@@ -9,7 +9,7 @@ export interface Contact {
 export const contactList: Contact[] = [
   {
     name: "Victoria Castagnola",
-    role: "Project Manager",
+    role: "Project Manager & Front-End Developer",
     phone: "540-554-1155",
     email: "castagnola.victoria@gmail.com",
     organization: "Virginia Commonwealth University",
@@ -22,19 +22,19 @@ export const contactList: Contact[] = [
   },
   {
     name: "Steven Zheng",
-    role: "Developer",
+    role: "Full-Stack Developer",
     email: "placeholder@example.com",
     organization: "Dev Team",
   },
   {
     name: "Angela Pantigozo-Cuellar",
-    role: "QA Tester",
+    role: "Front-End Developer",
     email: "placeholder@example.com",
     organization: "Quality Team",
   },
   {
     name: "Jeremiah Robert",
-    role: "Product Owner",
+    role: "Back-End Developer",
     email: "placeholder@example.com",
     organization: "Product Team",
   },
