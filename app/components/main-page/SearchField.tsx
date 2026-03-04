@@ -1,27 +1,30 @@
 import { useState } from "react";
-import { ReadListing } from "~/BFF/WebBFF";
+import { GetFullListingDetail, ReadListing } from "~/BFF/WebBFF";
 import type { PropertyInterface } from "../types/PropertyInterface";
+import { useNavigate } from "react-router";
+import { IsValidURL } from "~/BFF/WebBFFHelper";
 
 export const SearchField = () => {
   const [listingURL, setListingURL] = useState("");
   const [loading, setLoading] = useState(false);
   const [property, setProperty] = useState<PropertyInterface | null>(null);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   //function to call the axios
-  const handleSearch = async () => {
-    try {
-      setLoading(true);
-      setError("");
-
-      const result = await ReadListing(parseInt(listingURL));
-      setProperty(result[0]);
-      console.log(result);
-    } catch {
-      setError("Failed to load property");
-    } finally {
-      setLoading(false);
+  const handleSearch = () => {
+    if (!listingURL.trim()) {
+      alert("Empty URL");
+      return;
     }
+    if(!IsValidURL(listingURL)) {
+      alert("Invalid URL.")
+      return;
+    }
+
+    navigate(`/before-after?url=${encodeURIComponent(listingURL)}`)      
+
+
   };
 
   return (

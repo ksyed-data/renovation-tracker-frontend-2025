@@ -1,6 +1,6 @@
 import type { ListingInterface } from "~/components/types/ListingInterface";
 import { AxiosInstance } from "./API/AxiosInstance";
-import { BuildRenovationListing, GetListingIdByURL } from "./WebBFFHelper";
+import { BuildRenovationListing, GetListingIdByURL, IsValidURL } from "./WebBFFHelper";
 import type { RenovationInputInterface } from "~/components/types/RenovationInputInterface";
 import type { FullListingDetailInterface } from "~/components/types/FullListingDetailInterface";
 import type { ListingResponseInterface } from "~/components/types/ListingResponseInterface";
@@ -29,6 +29,12 @@ export async function GetFullListingDetail(
   url: string,
 ): Promise<FullListingDetailInterface> {
   try {
+    //validating the url
+    if(!IsValidURL(url)) {
+      alert("Invalid URL.")
+      throw new Error("Invalid URL");
+    }
+
     let id: number | null = await GetListingIdByURL(url);
     let predictedData;
 
@@ -56,6 +62,7 @@ export async function GetFullListingDetail(
     };
   } catch (error) {
     console.error("GET Listing failed:", error);
+    alert("Could not find listing.")
     throw error;
   }
 }

@@ -6,9 +6,11 @@ import { LivingRoom } from "../LivingRoom";
 import { Bedroom } from "../Bedroom";
 import { Basement } from "../Basement";
 import { House } from "../House";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
+import { useEffect, useState } from "react";
+import { GetFullListingDetail } from "~/BFF/WebBFF";
 
-export const BeforeAfterView = () => {
+export const BeforeAfter = () => {
   const sampleProperty = mockProperties[0];
   const propertyPhotos = getPhotosByPropertyId(sampleProperty.id);
   const uniqueRoomTypes = Array.from(
@@ -18,6 +20,26 @@ export const BeforeAfterView = () => {
     if (b == "house") return 1;
     return 0;
   });
+
+  //getting url from dashboard
+  const [searchParams] = useSearchParams();
+  const url = searchParams.get("url");
+  //some hooks use to store data
+  const[data, setData] = useState<any>(null);
+  const[loading, setLoading] = useState(false);
+  //loading logic
+  useEffect(() => {
+    if(!url) return;
+    const fetchData = async () => {
+      setLoading(true);
+      const response = await GetFullListingDetail(url);
+      console.log(response);
+      setLoading(false);
+    }
+
+    fetchData();
+  }, [url]);
+
   const housePhoto = propertyPhotos.find(
     (p) => p.room_type && p.room_type.toLowerCase() == "house",
   );
@@ -93,6 +115,13 @@ export const BeforeAfterView = () => {
     }
     return null;
   };
+
+  //loading
+  if(loading) {
+    return (
+      <p className="w-screen h-screen flex items-center justify-center">Loading...</p>
+    )
+  }
 
   return (
     <div className="text-black">
