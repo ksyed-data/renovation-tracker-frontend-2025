@@ -1,16 +1,26 @@
+import { contactList } from "../components/contact-page/contacts";
+import { ContactCard } from "../components/contact-page/ContactCard";
+import { NavMenu } from "../components/NavMenu";
 import type { Route } from "./+types/home";
-import { ContactPage } from "~/components/layouts/ContactPage";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Contact Page" },
-    {
-      name: "Contacts",
-      content: "Contacts of everyone who worked on this project.",
-    },
+    { title: "Contacts" },
+    { name: "Contacts", content: "Meet our team and reach out." },
   ];
 }
 
 export default function Contacts() {
-  return <ContactPage />;
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <NavMenu />
+      <div className="p-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {contactList.map((contact) => (
+            <ContactCard key={contact.email} contact={contact} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
