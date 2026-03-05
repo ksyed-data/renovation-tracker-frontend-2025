@@ -1,6 +1,6 @@
 import { contactList } from "../components/contact-page/contacts";
 import { ContactCard } from "../components/contact-page/ContactCard";
-import { NavMenu } from "../components/NavMenu";
+import { NavMenu } from "../components/navMenu";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
