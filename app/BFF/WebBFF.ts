@@ -7,6 +7,8 @@ import type { ListingResponseInterface } from "~/components/types/ListingRespons
 import type { PredictedRenovationResponse } from "~/components/types/PredictRenovationResponse";
 import type { RenovationListingInterface } from "~/components/types/RenovationListingInterface";
 import type { PhotoResponse } from "~/components/types/PhotoResponse";
+import type { PhotoClassification } from "~/components/types/PhotoClassification";
+import type { PhotoListing } from "~/components/types/PhotoListing";
 
 //Create a Listing
 export async function CreateListing(
@@ -48,6 +50,10 @@ export async function GetFullListingDetail(
         predictedData.result.items,
       );
       CreateRenovation(renovationListing);
+      const photoDetail = await ReadListingPhotos(id);
+      console.log("Photos:", photoDetail);
+      console.log("Is array:", Array.isArray(photoDetail));
+      await Promise.all(photoDetail.map( photo => ClassifyPhoto(photo.photo_id)));
     }
 
     //getting data
@@ -58,7 +64,7 @@ export async function GetFullListingDetail(
     return {
       listing: listingData,
       renovation: renovationData,
-      photos: photoDetail,
+      photos: {photos: photoDetail},
     };
   } catch (error) {
     console.error("GET Listing failed:", error);
@@ -141,7 +147,7 @@ export async function CreateRenovation(
 //Getting Photo details
 export async function ReadListingPhotos(
   listingId: number,
-): Promise<PhotoResponse> {
+): Promise<PhotoListing[]> {
   try {
     const { data } = await AxiosInstance.get(`/photos/${listingId}/read`);
     return data;
@@ -173,4 +179,16 @@ export async function ReadRenovation(
     console.error("GET Renovation request failed:", error);
     throw error;
   }
+}
+//classify photo
+export async function ClassifyPhoto(photoId: number){
+  try {
+    await AxiosInstance.put("/photos/inference", null, {
+      params: { photo_id: photoId }, 
+    });
+  } catch(error) {
+    console.error("Photo Classify request failed:", error);
+    throw error;
+  }
+
 }

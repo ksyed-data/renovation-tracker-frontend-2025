@@ -7,10 +7,11 @@ import { Bedroom } from "../Bedroom";
 import { Basement } from "../Basement";
 import { House } from "../House";
 import { Link, useSearchParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GetFullListingDetail } from "~/BFF/WebBFF";
 
 export const BeforeAfter = () => {
+  const previousUrl = useRef<string | null>(null);
   const sampleProperty = mockProperties[0];
   const propertyPhotos = getPhotosByPropertyId(sampleProperty.id);
   const uniqueRoomTypes = Array.from(
@@ -25,17 +26,21 @@ export const BeforeAfter = () => {
   const [searchParams] = useSearchParams();
   const url = searchParams.get("url");
   //some hooks use to store data
-  const[data, setData] = useState<any>(null);
-  const[loading, setLoading] = useState(false);
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
   //loading logic
   useEffect(() => {
-    if(!url) return;
+    if (!url) return;
+    if (previousUrl.current === url) return;
+
+    previousUrl.current = url;
     const fetchData = async () => {
       setLoading(true);
       const response = await GetFullListingDetail(url);
+      setData(response);
       console.log(response);
       setLoading(false);
-    }
+    };
 
     fetchData();
   }, [url]);
@@ -117,10 +122,12 @@ export const BeforeAfter = () => {
   };
 
   //loading
-  if(loading) {
+  if (loading) {
     return (
-      <p className="w-screen h-screen flex items-center justify-center">Loading...</p>
-    )
+      <p className="w-screen h-screen flex items-center justify-center">
+        Loading...
+      </p>
+    );
   }
 
   return (
