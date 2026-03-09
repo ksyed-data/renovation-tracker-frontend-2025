@@ -1,4 +1,4 @@
-import Home from "~/routes/home";
+
 import { HomeMiniUI } from "./HomeMiniUI";
 import { HomeData } from "../mock/HomeData";
 

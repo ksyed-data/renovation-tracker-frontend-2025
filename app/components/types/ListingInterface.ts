@@ -1,10 +1,10 @@
-export interface HomeClickable {
+export interface ListingInterface {
   url: string;
   image: string;
-  streetAdress: string;
+  address: string;
   description: string;
   price: number;
   bedroom: number;
   bathroom: number;
-  yearBuilt: number;
+  year_built: number;
 }
