@@ -64,7 +64,7 @@ export async function GetFullListingDetail(
     return {
       listing: listingData,
       renovation: renovationData,
-      photos: {photos: photoDetail},
+      photos: photoDetail,
     };
   } catch (error) {
     console.error("GET Listing failed:", error);
