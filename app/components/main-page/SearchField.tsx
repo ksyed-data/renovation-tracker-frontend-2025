@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { GetFullListingDetail, ReadListing } from "~/BFF/WebBFF";
 import type { PropertyInterface } from "../types/PropertyInterface";
 import { useNavigate } from "react-router";
 import { IsValidURL } from "~/BFF/WebBFFHelper";

@@ -8,7 +8,12 @@ import { Basement } from "../Basement";
 import { House } from "../House";
 import { Link, useSearchParams } from "react-router";
 import { useEffect, useRef, useState } from "react";
-import { GetFullListingDetail } from "~/BFF/WebBFF";
+import { GetListingByURL, PredictRenovationWithDescription, ReadAndClassifyPhoto } from "~/BFF/WebBFF";
+import { AddressField } from "../prototype/AddressField";
+import type { RenovationListingInterface } from "../types/RenovationListingInterface";
+import type { ListingResponseInterface } from "../types/ListingResponseInterface";
+import type { PhotoListing } from "../types/PhotoListing";
+
 
 export const BeforeAfter = () => {
   const previousUrl = useRef<string | null>(null);
@@ -26,7 +31,9 @@ export const BeforeAfter = () => {
   const [searchParams] = useSearchParams();
   const url = searchParams.get("url");
   //some hooks use to store data
-  const [data, setData] = useState<any>(null);
+  const[listing, setListing] = useState<ListingResponseInterface>();
+  const[renovation, setRenovation] = useState<RenovationListingInterface>();
+  const[photos, setPhotos] = useState<PhotoListing[]>();
   const [loading, setLoading] = useState(false);
   //loading logic
   useEffect(() => {
@@ -35,11 +42,25 @@ export const BeforeAfter = () => {
 
     previousUrl.current = url;
     const fetchData = async () => {
+      //getting and setting listing detail
       setLoading(true);
-      const response = await GetFullListingDetail(url);
-      setData(response);
-      console.log(response);
+      const response = await GetListingByURL(url);
+      setListing(response);
       setLoading(false);
+
+      //getting and setting renovation detail
+      const renovationData = await PredictRenovationWithDescription(response.description, response.listing_id)
+      setRenovation(renovationData);
+
+      //get and classify photo
+      const photoData = await ReadAndClassifyPhoto(response.listing_id);
+      setPhotos(photoData);
+
+
+      //testing
+      console.log(response);
+      console.log(renovationData);
+      console.log(photoData);
     };
 
     fetchData();
@@ -121,14 +142,6 @@ export const BeforeAfter = () => {
     return null;
   };
 
-  //loading
-  if (loading) {
-    return (
-      <p className="w-screen h-screen flex items-center justify-center">
-        Loading...
-      </p>
-    );
-  }
 
   return (
     <div className="text-black">
@@ -137,12 +150,7 @@ export const BeforeAfter = () => {
 
       <div className="max-w-6xl mx-auto p-6">
         <div className="bg-gray-200 rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {sampleProperty.address}
-          </h2>
-
-          <p className="text-gray-700 mb-6">{sampleProperty.description}</p>
-
+          <AddressField listing={listing} loading={loading}/>
           <div className="space-y-6">
             {uniqueRoomTypes.map((roomType) => {
               const photo = propertyPhotos.find((p) => p.room_type == roomType);
