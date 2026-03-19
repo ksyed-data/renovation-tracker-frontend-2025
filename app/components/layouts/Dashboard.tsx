@@ -6,13 +6,6 @@ import { useEffect, useState } from "react";
 import { LoadingScreen } from "./LoadingScreen";
 
 export const Dashboard = () => {
-  //This is purely for testing purpose of BFF
-  //Start of testing for BFF function
-
-
-  //End of testing for BFF Function
-
-
   return (
     <div className="flex-col h-full">
       <div className="flex-col h-140 bg-[url('/background.png')] bg-bottom bg-no-repeat bg-cover">

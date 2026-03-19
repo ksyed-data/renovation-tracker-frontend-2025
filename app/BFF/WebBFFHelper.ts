@@ -43,6 +43,6 @@ export function BuildRenovationListing(
 }
 //add a validation function
 export function IsValidURL(url: string) {
-    const pattern = /^https:\/\/www\.homes\.com\/property\/.+\/$/;
-    return pattern.test(url);
+  const pattern = /^https:\/\/www\.homes\.com\/property\/.+\/$/;
+  return pattern.test(url);
 }

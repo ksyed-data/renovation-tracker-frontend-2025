@@ -16,14 +16,12 @@ export const SearchField = () => {
       alert("Empty URL");
       return;
     }
-    if(!IsValidURL(listingURL)) {
-      alert("Invalid URL.")
+    if (!IsValidURL(listingURL)) {
+      alert("Invalid URL.");
       return;
     }
 
-    navigate(`/before-after?url=${encodeURIComponent(listingURL)}`)      
-
-
+    navigate(`/before-after?url=${encodeURIComponent(listingURL)}`);
   };
 
   return (

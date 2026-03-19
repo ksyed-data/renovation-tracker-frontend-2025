@@ -64,7 +64,7 @@ export async function ReadAndClassifyPhoto(
 ): Promise<PhotoListing[]> {
   let photoDetail = await ReadListingPhotos(id);
   //return already classified photos
-  if(photoDetail.length > 0 && photoDetail[0].room_type) {
+  if (photoDetail.length > 0 && photoDetail[0].room_type) {
     return photoDetail;
   }
   await Promise.all(photoDetail.map((photo) => ClassifyPhoto(photo.photo_id)));
@@ -78,10 +78,9 @@ export async function PredictRenovationWithDescription(
   description: string,
   id: number,
 ): Promise<RenovationListingInterface[]> {
-  let renovationData: RenovationListingInterface[] =
-    await ReadRenovation(id);
+  let renovationData: RenovationListingInterface[] = await ReadRenovation(id);
   try {
-    if(renovationData.length > 0) {
+    if (renovationData.length > 0) {
       return renovationData;
     }
     const predictData = await PredictRenovation(description);
