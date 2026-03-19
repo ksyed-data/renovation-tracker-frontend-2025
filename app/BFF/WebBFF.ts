@@ -125,6 +125,10 @@ export async function ReadAndClassifyPhoto(
   id: number,
 ): Promise<PhotoListing[]> {
   let photoDetail = await ReadListingPhotos(id);
+  //return already classified photos
+  if(photoDetail.length > 0 && photoDetail[0].room_type) {
+    return photoDetail;
+  }
   await Promise.all(photoDetail.map((photo) => ClassifyPhoto(photo.photo_id)));
   photoDetail = await ReadListingPhotos(id);
 
@@ -135,10 +139,13 @@ export async function ReadAndClassifyPhoto(
 export async function PredictRenovationWithDescription(
   description: string,
   id: number,
-): Promise<RenovationListingInterface> {
-  let renovationData: RenovationListingInterface =
+): Promise<RenovationListingInterface[]> {
+  let renovationData: RenovationListingInterface[] =
     await ReadRenovation(id);
   try {
+    if(renovationData.length > 0) {
+      return renovationData;
+    }
     const predictData = await PredictRenovation(description);
     let renovationListing = BuildRenovationListing(
       id,
@@ -253,7 +260,7 @@ export async function GetListing(
 //Getting Renovation
 export async function ReadRenovation(
   listingId: number,
-): Promise<RenovationListingInterface> {
+): Promise<RenovationListingInterface[]> {
   try {
     const { data } = await AxiosInstance.get(`/renovations/${listingId}/read`);
     return data;
