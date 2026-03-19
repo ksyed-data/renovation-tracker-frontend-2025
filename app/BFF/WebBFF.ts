@@ -6,12 +6,9 @@ import {
   IsValidURL,
 } from "./WebBFFHelper";
 import type { RenovationInputInterface } from "~/components/types/RenovationInputInterface";
-import type { FullListingDetailInterface } from "~/components/types/FullListingDetailInterface";
 import type { ListingResponseInterface } from "~/components/types/ListingResponseInterface";
 import type { PredictedRenovationResponse } from "~/components/types/PredictRenovationResponse";
 import type { RenovationListingInterface } from "~/components/types/RenovationListingInterface";
-import type { PhotoResponse } from "~/components/types/PhotoResponse";
-import type { PhotoClassification } from "~/components/types/PhotoClassification";
 import type { PhotoListing } from "~/components/types/PhotoListing";
 
 //Create a Listing
@@ -30,54 +27,7 @@ export async function CreateListing(
     throw error;
   }
 }
-//Get the listing and renovation data base on the URL
-/*
-export async function GetFullListingDetail(
-  url: string,
-): Promise<FullListingDetailInterface> {
-  try {
-    //validating the url
-    if (!IsValidURL(url)) {
-      alert("Invalid URL.");
-      throw new Error("Invalid URL");
-    }
 
-    let id: number | null = await GetListingIdByURL(url);
-    let predictedData;
-
-    //if no listing is found, we will create a listing by url
-    if (id == null) {
-      const data = await CreateListing(url);
-      id = data.listing_id;
-      predictedData = await PredictRenovation(data.description);
-      let renovationListing = BuildRenovationListing(
-        id,
-        predictedData.result.items,
-      );
-      CreateRenovation(renovationListing);
-      const photoDetail = await ReadListingPhotos(id);
-      await Promise.all(
-        photoDetail.map((photo) => ClassifyPhoto(photo.photo_id)),
-      );
-    }
-
-    //getting data
-    const listingData = await GetListing(id);
-    const renovationData = await ReadRenovation(id);
-    const photoDetail = await ReadListingPhotos(id);
-
-    return {
-      //listing: listingData,
-      renovation: renovationData,
-      photos: photoDetail,
-    };
-  } catch (error) {
-    console.error("GET Listing failed:", error);
-    alert("Could not find listing.");
-    throw error;
-  }
-}
-*/
 //frontend function to get listing detail
 export async function GetListingByURL(
   url: string,
@@ -95,22 +45,10 @@ export async function GetListingByURL(
     if (id == null) {
       const data = await CreateListing(url);
       id = data.listing_id;
-      //predictedData = await PredictRenovation(data.description);
-      //let renovationListing = BuildRenovationListing(
-      //id,
-      //predictedData.result.items,
-      //);
-      //CreateRenovation(renovationListing);
-      //const photoDetail = await ReadListingPhotos(id);
-      //await Promise.all(
-      //photoDetail.map((photo) => ClassifyPhoto(photo.photo_id)),
-      //);
     }
 
     //getting data
     const listingData = await GetListing(id);
-    //const renovationData = await ReadRenovation(id);
-    //const photoDetail = await ReadListingPhotos(id);
 
     return listingData;
   } catch (error) {
