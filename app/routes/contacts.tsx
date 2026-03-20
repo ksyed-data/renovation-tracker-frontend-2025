@@ -1,16 +1,13 @@
-import type { Route } from "./+types/home";
-import { ContactPage } from "~/components/layouts/ContactPage";
+import type { Route } from "./+types/contacts";
+import ContactPage from "../components/contact-page/ContactPage";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Contact Page" },
-    {
-      name: "Contacts",
-      content: "Contacts of everyone who worked on this project.",
-    },
+    { title: "Contacts" },
+    { name: "Contacts", content: "Meet our team and reach out." },
   ];
 }
 
-export default function Contacts() {
+export default function ContactsRoute() {
   return <ContactPage />;
 }
