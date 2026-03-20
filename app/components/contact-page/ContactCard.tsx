@@ -15,10 +15,16 @@ export function ContactCard({ contact }: ContactCardProps) {
       </div>
       <h3 className="font-semibold text-lg">{contact.name}</h3>
       <p className="text-sm text-gray-600">{contact.role}</p>
+      <p className="text-sm text-gray-600">{contact.organization}</p>
+      
       <a href={`mailto:${contact.email}`} className="text-sm text-blue-600 hover:underline">
         {contact.email}
       </a>
-      <p className="text-sm text-gray-600">{contact.organization}</p>
+      {contact.linkedin && (
+        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
+          LinkedIn
+        </a>
+      )}
     </div>
   );
 }
