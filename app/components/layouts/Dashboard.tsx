@@ -1,4 +1,3 @@
-import { CreateListing, GetFullListingDetail } from "~/BFF/WebBFF";
 import { ExploreMore } from "../main-page/ExploreMore";
 import { ProjectSummary } from "../main-page/ProjectSummary";
 import { SearchBar } from "../main-page/SearchBar";
@@ -7,33 +6,6 @@ import { useEffect, useState } from "react";
 import { LoadingScreen } from "./LoadingScreen";
 
 export const Dashboard = () => {
-  //This is purely for testing purpose of BFF
-  //Start of testing for BFF function
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const runTest = async () => {
-      try {
-        setLoading(true);
-        const result = await GetFullListingDetail(
-          "https://www.homes.com/property/1517-oakwood-ave-richmond-va/h7d5kcbqnxje9/",
-        );
-        console.log("GET success:", result);
-      } catch (err) {
-        console.error("GET failed:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    runTest();
-  }, []);
-  //End of testing for BFF Function
-
-  if (loading) {
-    return <LoadingScreen />;
-  }
-
   return (
     <div className="flex-col h-full">
       <div className="flex-col h-140 bg-[url('/background.png')] bg-bottom bg-no-repeat bg-cover">
