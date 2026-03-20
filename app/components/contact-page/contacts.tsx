@@ -59,5 +59,20 @@ export const contactList: Contact[] = [
     organization: "CoStar Group",
     linkedin: "https://www.linkedin.com/in/abigail-marlett/",
     email: "amarlett@costar.com",
+  },
+  {
+    name: "Dr. Syed Khaja Moinuddin",
+    role: "Co",
+    organization: "CoStar Group",
+    linkedin: "https://www.linkedin.com/in/syed-khajamoinuddin/",
+    email: "ksyed@costar.com",
+  },
+  {
+    name: "Dr. Preetam Ghosh",
+    role: "Faculty Advisor",
+    organization: "Virginia Commonwealth University",
+    linkedin: "https://www.linkedin.com/in/preetam-ghosh-9a1b8a1a/",
+    email: "pghosh@vcu.edu",
   }
+
 ];
