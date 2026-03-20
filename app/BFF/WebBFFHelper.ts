@@ -23,6 +23,7 @@ export async function GetListingIdByURL(url: string): Promise<number | null> {
   return match.listing_id;
 }
 
+//building payload for renovation endpoint
 export function BuildRenovationListing(
   listing_id: number,
   items: { name: string; renovated: boolean }[],
@@ -39,4 +40,9 @@ export function BuildRenovationListing(
     bedroom: getRenovated("bedroom"),
     basement: getRenovated("basement"),
   };
+}
+//add a validation function
+export function IsValidURL(url: string) {
+  const pattern = /^https:\/\/www\.homes\.com\/property\/.+\/$/;
+  return pattern.test(url);
 }

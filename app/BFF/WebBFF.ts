@@ -1,12 +1,15 @@
 import type { ListingInterface } from "~/components/types/ListingInterface";
 import { AxiosInstance } from "./API/AxiosInstance";
-import { BuildRenovationListing, GetListingIdByURL } from "./WebBFFHelper";
+import {
+  BuildRenovationListing,
+  GetListingIdByURL,
+  IsValidURL,
+} from "./WebBFFHelper";
 import type { RenovationInputInterface } from "~/components/types/RenovationInputInterface";
-import type { FullListingDetailInterface } from "~/components/types/FullListingDetailInterface";
 import type { ListingResponseInterface } from "~/components/types/ListingResponseInterface";
 import type { PredictedRenovationResponse } from "~/components/types/PredictRenovationResponse";
 import type { RenovationListingInterface } from "~/components/types/RenovationListingInterface";
-import type { PhotoResponse } from "~/components/types/PhotoResponse";
+import type { PhotoListing } from "~/components/types/PhotoListing";
 
 //Create a Listing
 export async function CreateListing(
@@ -24,38 +27,74 @@ export async function CreateListing(
     throw error;
   }
 }
-//Get the listing and renovation data base on the URL
-export async function GetFullListingDetail(
+
+//frontend function to get listing detail
+export async function GetListingByURL(
   url: string,
-): Promise<FullListingDetailInterface> {
+): Promise<ListingResponseInterface> {
   try {
+    //validating the url
+    if (!IsValidURL(url)) {
+      alert("Invalid URL.");
+      throw new Error("Invalid URL");
+    }
+
     let id: number | null = await GetListingIdByURL(url);
-    let predictedData;
 
     //if no listing is found, we will create a listing by url
     if (id == null) {
       const data = await CreateListing(url);
       id = data.listing_id;
-      predictedData = await PredictRenovation(data.description);
-      let renovationListing = BuildRenovationListing(
-        id,
-        predictedData.result.items,
-      );
-      CreateRenovation(renovationListing);
     }
 
     //getting data
     const listingData = await GetListing(id);
-    const renovationData = await ReadRenovation(id);
-    const photoDetail = await ReadListingPhotos(id);
 
-    return {
-      listing: listingData,
-      renovation: renovationData,
-      photos: photoDetail,
-    };
+    return listingData;
   } catch (error) {
     console.error("GET Listing failed:", error);
+    alert("Could not find listing.");
+    throw error;
+  }
+}
+
+//front end function to read photo and classify them
+export async function ReadAndClassifyPhoto(
+  id: number,
+): Promise<PhotoListing[]> {
+  let photoDetail = await ReadListingPhotos(id);
+  //return already classified photos
+  if (photoDetail.length > 0 && photoDetail[0].room_type) {
+    return photoDetail;
+  }
+  await Promise.all(photoDetail.map((photo) => ClassifyPhoto(photo.photo_id)));
+  photoDetail = await ReadListingPhotos(id);
+
+  return photoDetail;
+}
+
+//frontend function to predict renovation
+export async function PredictRenovationWithDescription(
+  description: string,
+  id: number,
+): Promise<RenovationListingInterface[]> {
+  let renovationData: RenovationListingInterface[] = await ReadRenovation(id);
+  try {
+    if (renovationData.length > 0) {
+      return renovationData;
+    }
+    const predictData = await PredictRenovation(description);
+    let renovationListing = BuildRenovationListing(
+      id,
+      predictData.result.items,
+    );
+    CreateRenovation(renovationListing);
+
+    renovationData = await ReadRenovation(id);
+
+    return renovationData;
+  } catch (error) {
+    console.error("PredictRenovationWithDescription function FAILED: ", error);
     throw error;
   }
 }
@@ -134,7 +173,7 @@ export async function CreateRenovation(
 //Getting Photo details
 export async function ReadListingPhotos(
   listingId: number,
-): Promise<PhotoResponse> {
+): Promise<PhotoListing[]> {
   try {
     const { data } = await AxiosInstance.get(`/photos/${listingId}/read`);
     return data;
@@ -158,12 +197,23 @@ export async function GetListing(
 //Getting Renovation
 export async function ReadRenovation(
   listingId: number,
-): Promise<RenovationListingInterface> {
+): Promise<RenovationListingInterface[]> {
   try {
     const { data } = await AxiosInstance.get(`/renovations/${listingId}/read`);
     return data;
   } catch (error) {
     console.error("GET Renovation request failed:", error);
+    throw error;
+  }
+}
+//classify photo
+export async function ClassifyPhoto(photoId: number) {
+  try {
+    await AxiosInstance.put("/photos/inference", null, {
+      params: { photo_id: photoId },
+    });
+  } catch (error) {
+    console.error("Photo Classify request failed:", error);
     throw error;
   }
 }

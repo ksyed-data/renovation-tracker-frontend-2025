@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import { BeforeAfterView } from "~/components/layouts/BeforeAfter";
+import { BeforeAfter } from "~/components/layouts/BeforeAfter";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Listing() {
-  return <BeforeAfterView />;
+  return <BeforeAfter />;
 }
