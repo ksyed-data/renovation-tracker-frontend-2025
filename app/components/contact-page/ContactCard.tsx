@@ -15,6 +15,9 @@ export function ContactCard({ contact }: ContactCardProps) {
       </div>
       <h3 className="font-semibold text-lg">{contact.name}</h3>
       <p className="text-sm text-gray-600">{contact.role}</p>
+      <a href={`mailto:${contact.email}`} className="text-sm text-blue-600 hover:underline">
+        {contact.email}
+      </a>
       <p className="text-sm text-gray-600">{contact.organization}</p>
     </div>
   );
