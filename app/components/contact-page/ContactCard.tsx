@@ -8,7 +8,6 @@ interface ContactCardProps {
 export function ContactCard({ contact }: ContactCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
-      {/* Avatar */}
       {contact.photo ? (
         <img
           src={contact.photo}

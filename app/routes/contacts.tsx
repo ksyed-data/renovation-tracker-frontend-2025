@@ -17,7 +17,7 @@ export default function Contacts() {
       <div className="p-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {contactList.map((contact) => (
-            <ContactCard key={contact.email} contact={contact} />
+            <ContactCard key={contact.key} contact={contact} />
           ))}
         </div>
       </div>
