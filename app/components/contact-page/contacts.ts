@@ -85,7 +85,7 @@ export const contactList: Contact[] = [
     photo: "https://media.licdn.com/dms/image/v2/D5603AQEEI1c6ya-wLA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1694636198798?e=1775692800&v=beta&t=IIKd27H-MAyjMGczzbuglCrI_Coue9abAY69UZ17qqw"
   },
   {
-    name: "Dr. Syed Khaja Moinuddin",
+    name: "Dr. Khajamoinuddin Syed",
     key: "0008",
     role: "Company Advisor",
     organization: "CoStar Group",
