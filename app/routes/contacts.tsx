@@ -1,7 +1,5 @@
-import { contactList } from "../components/contact-page/contacts";
-import { ContactCard } from "../components/contact-page/ContactCard";
-import { NavMenu } from "../components/navMenu";
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/contacts";
+import ContactPage from "../components/contact-page/ContactPage";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,17 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Contacts() {
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <NavMenu />
-      <div className="p-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {contactList.map((contact) => (
-            <ContactCard key={contact.key} contact={contact} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+export default function ContactsRoute() {
+  return <ContactPage />;
 }

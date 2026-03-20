@@ -1,5 +1,5 @@
 import type { Route } from "./+types/carousel";
-import { Carousel } from "~/components/Carousel";
+import { Carousel } from "~/components/carousel";
 import {
   mockProperties,
   getPhotosByPropertyAndRoomType,
