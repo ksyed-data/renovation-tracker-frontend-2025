@@ -2,8 +2,6 @@ import { ExploreMore } from "../main-page/ExploreMore";
 import { ProjectSummary } from "../main-page/ProjectSummary";
 import { SearchBar } from "../main-page/SearchBar";
 import { NavMenu } from "../NavMenu";
-import { useEffect, useState } from "react";
-import { LoadingScreen } from "./LoadingScreen";
 
 export const Dashboard = () => {
   return (
