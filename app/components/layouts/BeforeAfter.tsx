@@ -81,7 +81,7 @@ export const BeforeAfter = () => {
       //testing
       console.log(response);
       console.log(renovationData);
-      console.log(grouped);
+      console.log(filteredPhotos);
     };
 
     fetchData();
@@ -90,10 +90,10 @@ export const BeforeAfter = () => {
   return (
     <div className="text-black">
       <NavMenu />
-      <BannerGallery photos={photos || []} loading={galleryLoading} />
       <h1 className="text-3xl font-bold mt-7 text-center">
         Property Information
       </h1>
+      <BannerGallery photos={photos || []} loading={galleryLoading} />
 
       <div className=" mx-auto p-6">
         <div className="rounded-lg p-6">

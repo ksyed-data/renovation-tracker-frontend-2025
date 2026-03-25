@@ -9,7 +9,7 @@ export const SearchBar = () => {
           src="/Logo.png"
           className="h-20 w-20 bg-cover border-0 fill-white"
         ></img>
-        <h1 className="py-5 text-center text-5xl font-bold text-white">
+        <h1 className="py-5 text-center text-5xl font-bold text-white ">
           Renovations Tracker
         </h1>
       </div>

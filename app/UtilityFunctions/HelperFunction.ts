@@ -1,8 +1,17 @@
 import type { PhotoListing } from "~/components/types/PhotoListing";
 import type { RenovationListingInterface } from "~/components/types/RenovationListingInterface";
 
-export const normalizeRoomName = (room: string) =>
-  room.toLowerCase().replace(/\s+/g, "_");
+export const normalizeRoomName = (room: string) => {
+  const r = room.toLowerCase().replace(/\s+/g, "");
+
+  if (r.includes("living")) return "living_room";
+  if (r.includes("bath")) return "bathroom";
+  if (r.includes("kitchen")) return "kitchen";
+  if (r.includes("bed")) return "bedroom";
+  if (r.includes("basement")) return "basement";
+
+  return r;
+};
 export const getRenovatedRoom = (
   listing: RenovationListingInterface,
 ): string[] => {
