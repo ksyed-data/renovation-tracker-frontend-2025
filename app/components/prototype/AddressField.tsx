@@ -1,5 +1,7 @@
 import type { ListingResponseInterface } from "../types/ListingResponseInterface";
 import { Spinner } from "./Spinner";
+import {parse} from "@universe/address-parser"
+
 
 type AddressFieldProp = {
   listing?: ListingResponseInterface;
@@ -13,21 +15,22 @@ export const AddressField = ({ listing, loading }: AddressFieldProp) => {
   if (!listing) {
     return null;
   }
-  //formatting address
-  const addressParts = listing.address.split(" ");
-  const street = addressParts.slice(0, 3).join(" ");
-  const cityState = addressParts.slice(3, addressParts.length - 1).join(" ");
-  const zip = addressParts[addressParts.length - 1];
+
+ //parsing street address and formatting it for display
+ const addressParts = parse(listing.address);
+ const streetAddressPartOne = [addressParts.number, addressParts.streetPreDir, addressParts.streetName, addressParts.streetType, addressParts.streetPostDir].filter(Boolean).join(" ");
+ const streetAddressPartTwo = [addressParts.city, addressParts.state, addressParts.zip].filter(Boolean).join(" ");
   return (
     <div>
       <div className="text-3xl text-black font-medium mb-4">
         ${listing.price.toLocaleString()}
       </div>
       <div className="text-2xl mb-6">
-        <div className="text-black font-medium">{street}</div>
+        <div className="text-black font-medium">
+          {streetAddressPartOne}
+        </div>
         <div className="text-gray-600 font-light">
-          {cityState}
-          {zip}
+          {streetAddressPartTwo}
         </div>
       </div>
       <div className="flex p-5 text-2xl border-gray-200 border-t-2 border-b-2 mb-6 justify-center items-center space-x-*">
