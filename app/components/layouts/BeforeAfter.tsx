@@ -98,11 +98,6 @@ export const BeforeAfter = () => {
 
       setGroupedPhotos(grouped);
       setGalleryLoading(false);
-
-      console.log(groupedAfterPhoto);
-      console.log(groupedBeforePhoto);
-      console.log(photoData);
-
     };
 
     fetchData();
@@ -119,7 +114,11 @@ export const BeforeAfter = () => {
       <div className=" mx-auto p-6">
         <div className="rounded-lg p-6">
           <AddressField listing={listing} loading={loading} />
-          <CompareSlider groupedBeforePhotos={beforePhotos} groupedAfterPhotos={afterPhotos} loading={galleryLoading}/>
+          <CompareSlider
+            groupedBeforePhotos={beforePhotos}
+            groupedAfterPhotos={afterPhotos}
+            loading={galleryLoading}
+          />
           <Gallery groupedPhotos={groupedPhotos} loading={galleryLoading} />
         </div>
       </div>

@@ -41,17 +41,13 @@ export const filterPhotoByRenovation = (
   });
 };
 
-export const filterBeforePhoto = (
-  photos: PhotoListing[]
-) => {
+export const filterBeforePhoto = (photos: PhotoListing[]) => {
   return photos.filter((photo) => photo.isHistorical);
-}
+};
 
-export const filterAfterPhoto = (
-  photos: PhotoListing[]
-) => {
+export const filterAfterPhoto = (photos: PhotoListing[]) => {
   return photos.filter((photo) => !photo.isHistorical);
-}
+};
 
 export const groupPhotosByRoom = (
   photos: PhotoListing[],

@@ -1,4 +1,3 @@
-
 import { HomeMiniUI } from "./HomeMiniUI";
 import { HomeData } from "../mock/HomeData";
 
