@@ -6,4 +6,5 @@ export default [
   route("before-after/:roomType", "routes/carousel.tsx"),
   route("/user-feedback", "routes/userFeedback.tsx"),
   route("/contacts", "routes/contacts.tsx"),
+  route("/PageNotFound", "routes/NotFound.tsx")
 ] satisfies RouteConfig;

@@ -1,6 +1,6 @@
 import { NavMenu } from "../NavMenu";
 import { mockProperties, getPhotosByPropertyId } from "../DummyData";
-import { Link, useSearchParams } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   GetListingByURL,
@@ -52,20 +52,30 @@ export const BeforeAfter = () => {
   const [afterPhotos, setAfterPhotos] = useState<
     Record<string, PhotoListing[]>
   >({});
-
+  const navigate = useNavigate();
   //loading logic
   useEffect(() => {
     if (!url) return;
     if (previousUrl.current === url) return;
 
     previousUrl.current = url;
+    
+    
     const fetchData = async () => {
+      let response;
+      try{
       //getting and setting listing detail
       setLoading(true);
       setGalleryLoading(true);
-      const response = await GetListingByURL(url);
+      response = await GetListingByURL(url);
       setListing(response);
       setLoading(false);
+      }
+      catch(error) {
+        navigate("/PageNotFound");
+      }
+      //response undefined guard
+      if (!response) return;
 
       //getting and setting renovation detail
       const renovationData = await PredictRenovationWithDescription(
