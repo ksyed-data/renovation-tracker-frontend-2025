@@ -29,6 +29,7 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
   return (
     <div className="pb-10">
       <h1 className="text-2xl font-medium text-black mb-2">Compare Tool</h1>
+      <p className="text-lg font-normal text-gray-600 mb-6">Click an image from the before section and an image from the after section. Then start comparing!</p>
       <div className="flex justify-center items-center w-full pb-4">
         <div className="w-full max-w-400 aspect-video">
           <ReactCompareSlider
@@ -81,7 +82,7 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
             Object.values(groupedAfterPhotos).every(
               (photos) => photos.length === 0,
             ) ? (
-              <div>No imges available</div>
+              <div>No images available</div>
             ) : (
               Object.entries(groupedAfterPhotos).map(
                 ([roomType, roomPhotos]) => (

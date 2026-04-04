@@ -64,7 +64,7 @@ export const contactList: Contact[] = [
     linkedin: "https://www.linkedin.com/in/zheng-steven/",
     phone: "540-554-1157",
     email: "steven.zheng7@icloud.com ",
-    photo: "https://media.discordapp.net/attachments/1426372404434829393/1484609068642467960/IMG_3073.jpg?ex=69bed970&is=69bd87f0&hm=1f5bf9e82af9bccbffe5102a1975fa304a3027ac00e868ce4516fa25e1295043&=&format=webp&width=689&height=1050"
+    photo: "https://cdn.discordapp.com/attachments/1426372404434829393/1484609068642467960/IMG_3073.jpg?ex=69d29ff0&is=69d14e70&hm=7d35cb7f9eac61f73a956ba727ec4bc0a50980293f85b0266400685667df4975&"
   },
   {
     name: "Justin Jones",
