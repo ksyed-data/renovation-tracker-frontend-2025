@@ -11,6 +11,7 @@ import type { PredictedRenovationResponse } from "~/components/types/PredictReno
 import type { RenovationListingInterface } from "~/components/types/RenovationListingInterface";
 import type { PhotoListing } from "~/components/types/PhotoListing";
 
+
 //Create a Listing
 export async function CreateListing(
   url: string,

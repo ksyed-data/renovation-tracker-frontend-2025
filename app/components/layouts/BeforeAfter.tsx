@@ -12,13 +12,15 @@ import type { RenovationListingInterface } from "../types/RenovationListingInter
 import type { ListingResponseInterface } from "../types/ListingResponseInterface";
 import type { PhotoListing } from "../types/PhotoListing";
 import {
+  filterAfterPhoto,
+  filterBeforePhoto,
   filterPhotoByRenovation,
   getRenovatedRoom,
   groupPhotosByRoom,
 } from "~/UtilityFunctions/HelperFunction";
 import { Gallery } from "../prototype/Gallery";
 import { BannerGallery } from "../prototype/BannerGallery";
-import { Spinner } from "../prototype/Spinner";
+import { CompareSlider } from "../prototype/CompareSlider";
 
 export const BeforeAfter = () => {
   const previousUrl = useRef<string | null>(null);
@@ -44,6 +46,12 @@ export const BeforeAfter = () => {
   const [loading, setLoading] = useState(false);
   const [galleryLoading, setGalleryLoading] = useState(false);
   const [photos, setPhotos] = useState<PhotoListing[]>();
+  const [beforePhotos, setBeforePhotos] = useState<
+    Record<string, PhotoListing[]>
+  >({});
+  const [afterPhotos, setAfterPhotos] = useState<
+    Record<string, PhotoListing[]>
+  >({});
 
   //loading logic
   useEffect(() => {
@@ -75,13 +83,26 @@ export const BeforeAfter = () => {
       const renovatedRooms = getRenovatedRoom(renovationData[0]);
       const filteredPhotos = filterPhotoByRenovation(photoData, renovatedRooms);
       const grouped = groupPhotosByRoom(filteredPhotos);
+
+      //before and after photos
+      const beforePhoto = filterBeforePhoto(photoData);
+      const afterPhoto = filterAfterPhoto(photoData);
+
+      //group the photos
+      const groupedBeforePhoto = groupPhotosByRoom(beforePhoto);
+      const groupedAfterPhoto = groupPhotosByRoom(afterPhoto);
+
+      //setting the photos
+      setBeforePhotos(groupedBeforePhoto);
+      setAfterPhotos(groupedAfterPhoto);
+
       setGroupedPhotos(grouped);
       setGalleryLoading(false);
 
-      //testing
-      console.log(response);
-      console.log(renovationData);
-      console.log(filteredPhotos);
+      console.log(groupedAfterPhoto);
+      console.log(groupedBeforePhoto);
+      console.log(photoData);
+
     };
 
     fetchData();
@@ -98,6 +119,7 @@ export const BeforeAfter = () => {
       <div className=" mx-auto p-6">
         <div className="rounded-lg p-6">
           <AddressField listing={listing} loading={loading} />
+          <CompareSlider groupedBeforePhotos={beforePhotos} groupedAfterPhotos={afterPhotos} loading={galleryLoading}/>
           <Gallery groupedPhotos={groupedPhotos} loading={galleryLoading} />
         </div>
       </div>

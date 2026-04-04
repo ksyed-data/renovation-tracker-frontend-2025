@@ -9,6 +9,9 @@ export const normalizeRoomName = (room: string) => {
   if (r.includes("kitchen")) return "kitchen";
   if (r.includes("bed")) return "bedroom";
   if (r.includes("basement")) return "basement";
+  if (r.includes("hall")) return "hallway";
+  if (r.includes("exterior")) return "home_exterior";
+  if (r.includes("dining")) return "dining_room";
 
   return r;
 };
@@ -37,6 +40,18 @@ export const filterPhotoByRenovation = (
     return normalizedRooms.includes(normalizeRoomName(photo.room_type));
   });
 };
+
+export const filterBeforePhoto = (
+  photos: PhotoListing[]
+) => {
+  return photos.filter((photo) => photo.isHistorical);
+}
+
+export const filterAfterPhoto = (
+  photos: PhotoListing[]
+) => {
+  return photos.filter((photo) => !photo.isHistorical);
+}
 
 export const groupPhotosByRoom = (
   photos: PhotoListing[],
