@@ -91,8 +91,6 @@ export const BeforeAfter = () => {
       //loading photo gallery
       await new Promise((res) => setTimeout(res, 50));
       const renovatedRooms = getRenovatedRoom(renovationData[0]);
-      const filteredPhotos = filterPhotoByRenovation(photoData, renovatedRooms);
-      const grouped = groupPhotosByRoom(filteredPhotos);
 
       //before and after photos
       const beforePhoto = filterBeforePhoto(photoData);
@@ -101,6 +99,10 @@ export const BeforeAfter = () => {
       //group the photos
       const groupedBeforePhoto = groupPhotosByRoom(beforePhoto);
       const groupedAfterPhoto = groupPhotosByRoom(afterPhoto);
+
+      //gallery photo
+      const filteredPhotos = filterPhotoByRenovation(afterPhoto, renovatedRooms);
+      const grouped = groupPhotosByRoom(filteredPhotos);
 
       //setting the photos
       setBeforePhotos(groupedBeforePhoto);
