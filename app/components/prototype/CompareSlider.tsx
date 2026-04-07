@@ -51,7 +51,7 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
             Object.values(groupedBeforePhotos).every(
               (photos) => photos.length === 0,
             ) ? (
-              <div>No imges available</div>
+              <div>No images available</div>
             ) : (
               Object.entries(groupedBeforePhotos).map(
                 ([roomType, roomPhotos]) => (
