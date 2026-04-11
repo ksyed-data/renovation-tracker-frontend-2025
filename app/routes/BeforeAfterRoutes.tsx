@@ -3,11 +3,11 @@ import { BeforeAfter } from "~/components/layouts/BeforeAfter";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Renovation Tracker" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
 
-export default function Listing() {
+export default function BeforeAfterRoutes() {
   return <BeforeAfter />;
 }

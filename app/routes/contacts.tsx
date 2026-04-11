@@ -3,7 +3,7 @@ import ContactPage from "../components/contact-page/ContactPage";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Contacts" },
+    { title: "Renovation Tracker" },
     { name: "Contacts", content: "Meet our team and reach out." },
   ];
 }
