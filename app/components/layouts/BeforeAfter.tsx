@@ -43,12 +43,13 @@ export const BeforeAfter = () => {
   //some hooks use to store data
   const [listing, setListing] = useState<ListingResponseInterface>();
   const [renovation, setRenovation] = useState<RenovationListingInterface[]>();
-  const [compareRenovation, setCompareRenovation] = useState<string[]>();
+  const [iconRenovation, setIconRenovation] = useState<string[]>();
   const [groupedPhotos, setGroupedPhotos] = useState<
     Record<string, PhotoListing[]>
   >({});
   const [loading, setLoading] = useState(false);
   const [galleryLoading, setGalleryLoading] = useState(false);
+  const [renovatedRoomLoading, setRenovatedRoomLoading] = useState(false);
   const [photos, setPhotos] = useState<PhotoListing[]>();
   const [comparePhotos, setComparePhotos] = useState<
     Array<{ room_type: string; before: PhotoListing[]; after: PhotoListing[] }>
@@ -60,19 +61,18 @@ export const BeforeAfter = () => {
     if (previousUrl.current === url) return;
 
     previousUrl.current = url;
-    
-    
+
     const fetchData = async () => {
       let response;
-      try{
-      //getting and setting listing detail
-      setLoading(true);
-      setGalleryLoading(true);
-      response = await GetListingByURL(url);
-      setListing(response);
-      setLoading(false);
-      }
-      catch(error) {
+      try {
+        //getting and setting listing detail
+        setLoading(true);
+        setGalleryLoading(true);
+        setRenovatedRoomLoading(true);
+        response = await GetListingByURL(url);
+        setListing(response);
+        setLoading(false);
+      } catch (error) {
         navigate("/PageNotFound");
       }
       //response undefined guard
@@ -97,45 +97,60 @@ export const BeforeAfter = () => {
       const beforePhoto = filterBeforePhoto(photoData);
       const afterPhoto = filterAfterPhoto(photoData);
 
-      //compare photo filtering 
-      const renovatedRoomNormalized = renovatedRooms.map(r => normalizeRenovation(r));
-      const beforeSet = new Set(beforePhoto.map(r => r.room_type));
-      const afterSet = new Set(beforePhoto.map(r => r.room_type));
+      //compare photo filtering
+      const renovatedRoomNormalized = renovatedRooms.map((r) =>
+        normalizeRenovation(r),
+      );
+      const beforeSet = new Set(beforePhoto.map((r) => r.room_type));
+      const afterSet = new Set(afterPhoto.map((r) => r.room_type));
       const renovatedSet = new Set(renovatedRoomNormalized);
 
       //setting compare renovation
-      setCompareRenovation(renovatedRoomNormalized);
+      setIconRenovation(renovatedRoomNormalized);
+      setRenovatedRoomLoading(false);
 
       //filtering the photos base on renovation that exsist in both before and after
-      const filterRenovationPhoto = photoData.filter(photo => 
-        photo.room_type &&
-        renovatedSet.has(photo.room_type) &&
-        beforeSet.has(photo.room_type) &&
-        afterSet.has(photo.room_type)
-      )
-
+      const filterRenovationPhoto = photoData.filter(
+        (photo) =>
+          photo.room_type &&
+          renovatedSet.has(photo.room_type) &&
+          beforeSet.has(photo.room_type) &&
+          afterSet.has(photo.room_type),
+      );
 
       //group the photos
-      const groupedBeforePhoto = groupPhotosByRoom(filterBeforePhoto(filterRenovationPhoto));
-      const groupedAfterPhoto = groupPhotosByRoom(filterAfterPhoto(filterRenovationPhoto));
+      const groupedBeforePhoto = groupPhotosByRoom(
+        filterBeforePhoto(filterRenovationPhoto),
+      );
+      const groupedAfterPhoto = groupPhotosByRoom(
+        filterAfterPhoto(filterRenovationPhoto),
+      );
 
       //grouped renovation photo
-      const groupedComparePhoto = renovatedRoomNormalized.map(room => ({
+      const groupedComparePhoto = renovatedRoomNormalized.map((room) => ({
         room_type: room,
         before: groupedBeforePhoto[room] || [],
-        after: groupedAfterPhoto[room] || []
-      }))
+        after: groupedAfterPhoto[room] || [],
+      }));
+
+      const filteredGroupedComparePhoto = groupedComparePhoto.filter(
+        (data) => data.before.length > 0 || data.after.length > 0,
+      );
 
       //gallery photo
-      const filteredPhotos = filterPhotoByRenovation(afterPhoto, renovatedRooms);
+      const filteredPhotos = filterPhotoByRenovation(
+        afterPhoto,
+        renovatedRooms,
+      );
       const grouped = groupPhotosByRoom(filteredPhotos);
 
       //setting the photos
-      setComparePhotos(groupedComparePhoto);
+      setComparePhotos(filteredGroupedComparePhoto);
 
       setGroupedPhotos(grouped);
       setGalleryLoading(false);
 
+      console.log(groupedComparePhoto);
     };
 
     fetchData();
@@ -152,7 +167,10 @@ export const BeforeAfter = () => {
       <div className=" mx-auto p-6">
         <div className="rounded-lg p-6">
           <AddressField listing={listing} loading={loading} />
-          <RenovationDisplay renovation={compareRenovation} loading={loading}/>
+          <RenovationDisplay
+            renovation={iconRenovation}
+            loading={renovatedRoomLoading}
+          />
           <CompareSlider
             groupedComparePhotos={comparePhotos}
             loading={galleryLoading}
