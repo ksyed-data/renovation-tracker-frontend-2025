@@ -15,6 +15,22 @@ export const normalizeRoomName = (room: string) => {
 
   return r;
 };
+export const normalizeRenovation = (room: string) => {
+  const r = room.toLowerCase().replace(/\s+/g, "");
+
+  if (r.includes("living")) return "Livingroom";
+  if (r.includes("bath")) return "Bathroom";
+  if (r.includes("kitchen")) return "Kitchen";
+  if (r.includes("bed")) return "Bedroom";
+  if (r.includes("basement")) return "Basement";
+  if (r.includes("hall")) return "Hallway";
+  if (r.includes("exterior")) return "HomeExterior";
+  if (r.includes("dining")) return "Dining";
+  if (r.includes("laund")) return "Laundry";
+  if (r.includes("other")) return "Other";
+
+  return r;
+};
 export const getRenovatedRoom = (
   listing: RenovationListingInterface,
 ): string[] => {
@@ -69,3 +85,7 @@ export const groupPhotosByRoom = (
     initialValue,
   );
 };
+//sorting out rooms that exsist in both sections
+export const filterCompareRooms = (beforePhoto: PhotoListing[], afterPhoto:PhotoListing[], renovations: RenovationListingInterface) => {
+  
+}

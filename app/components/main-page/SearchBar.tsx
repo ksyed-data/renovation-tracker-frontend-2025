@@ -4,11 +4,6 @@ export const SearchBar = () => {
   return (
     <div className="flex flex-col justify-center">
       <div className="flex w-full my-15 justify-center space-x-1">
-        <img
-          alt="CoStar Logo."
-          src="/Logo.png"
-          className="h-20 w-20 bg-cover border-0 fill-white drop-shadow-lg"
-        ></img>
         <h1 className="py-5 text-center text-5xl text-shadow-lg font-bold text-white">
           Renovations Tracker
         </h1>

@@ -5,16 +5,17 @@ import {
 import type { PhotoListing } from "../types/PhotoListing";
 import { Spinner } from "./Spinner";
 import { useState } from "react";
-import { GalleryIcon } from "./GalleryIcon";
 
 type RoomGallerySectionProps = {
-  groupedBeforePhotos: Record<string, PhotoListing[]>;
-  groupedAfterPhotos: Record<string, PhotoListing[]>;
+  groupedComparePhotos: Array<{
+    room_type: string;
+    before: PhotoListing[];
+    after: PhotoListing[];
+  }>;
   loading: boolean;
 };
 export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
-  groupedBeforePhotos,
-  groupedAfterPhotos,
+  groupedComparePhotos,
   loading,
 }) => {
   const [selectBefore, setSelectBefore] = useState<string>(
@@ -23,6 +24,7 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
   const [selectAfter, setSelectAfter] = useState<string>(
     "https://cdn.vectorstock.com/i/1000v/27/88/select-image-vector-10832788.jpg",
   );
+
   if (loading) {
     return <Spinner />;
   }
@@ -34,7 +36,7 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
         section. Then start comparing!
       </p>
       <div className="flex justify-center items-center w-full pb-4">
-        <div className="w-full max-w-400 aspect-video">
+        <div className="w-full max-w-350 aspect-video">
           <ReactCompareSlider
             itemOne={<ReactCompareSliderImage src={selectBefore} />}
             itemTwo={<ReactCompareSliderImage src={selectAfter} />}
@@ -43,72 +45,55 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
       </div>
       <div className="w-full flex justify-center space-x-3">
         <div className="space-y-6 text-center">
-          <h2 className="text-2xl font-medium text-black mb-2" text-center>
-            Before Images
-          </h2>
-          <div className="overflow-y-auto w-250 h-300">
-            {Object.keys(groupedBeforePhotos).length === 0 ||
-            Object.values(groupedBeforePhotos).every(
-              (photos) => photos.length === 0,
+          <div className="flex w-full items-center">
+            <h2 className="text-2xl w-full font-medium text-black mb-2 text-center">
+              Before Images
+            </h2>
+            <h2 className="text-2xl w-full font-medium text-black mb-2 text-center">
+              After Images
+            </h2>
+          </div>
+          <div className="overflow-y-auto w-300 h-300">
+            {groupedComparePhotos.length === 0 ||
+            groupedComparePhotos.every(
+              (data) => data.before.length === 0 && data.after.length === 0,
             ) ? (
               <div>No images available</div>
             ) : (
-              Object.entries(groupedBeforePhotos).map(
-                ([roomType, roomPhotos]) => (
-                  <div key={roomType} className="p-4">
-                    <h2 className="text-2xl font-medium mb-4 text-gray-600 bg-gray-200">
-                      {roomType}
-                    </h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 pb-2">
-                      {roomPhotos.map((photo) => (
-                        <div key={photo.photo_id}>
+              groupedComparePhotos.map((data) => (
+                <div key={data.room_type} className="p-4">
+                  <h2 className="text-2xl font-medium mb-4 text-gray-600 bg-gray-200">
+                    {data.room_type}
+                  </h2>
+                  <div className="flex items-start gap-4">
+                      <div className="grid grid-cols-3 gap-2">
+                        {data.before.map((photo) => (
                           <img
+                            key={photo.photo_id}
                             src={photo.url}
-                            alt={`${roomType} - ${photo.photo_id}`}
-                            className={`object-cover w-full h-40 rounded-lg shadow-md cursor-pointer ${selectBefore === photo.url ? "outline-4 outline-orange-400" : ""}`}
-                            loading="lazy"
+                            alt={`${data.room_type} photos`}
+                            className={`h-40 w-80 ${selectBefore === photo.url ? "outline-4 outline-orange-400" : ""}`}
                             onClick={() => setSelectBefore(photo.url)}
                           />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ),
-              )
-            )}
-          </div>
-        </div>
-        <div className="space-y-6 text-center">
-          <h2 className="text-2xl font-medium text-black mb-2">After Images</h2>
-          <div className=" overflow-y-auto w-250 h-300">
-            {Object.keys(groupedAfterPhotos).length === 0 ||
-            Object.values(groupedAfterPhotos).every(
-              (photos) => photos.length === 0,
-            ) ? (
-              <div>No images available</div>
-            ) : (
-              Object.entries(groupedAfterPhotos).map(
-                ([roomType, roomPhotos]) => (
-                  <div key={roomType} className="p-4">
-                    <h2 className="text-2xl font-medium mb-4 text-gray-600 bg-gray-200">
-                      {roomType}
-                    </h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 pb-2">
-                      {roomPhotos.map((photo) => (
-                        <div key={photo.photo_id}>
+                        ))}
+                      </div>
+                      <div className="flex h-100 w-20 text-gray-300 text-5xl justify-center items-center">
+                        |
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        {data.after.map((photo) => (
                           <img
+                            key={photo.photo_id}
                             src={photo.url}
-                            alt={`${roomType} - ${photo.photo_id}`}
-                            className={`object-cover w-full h-40 rounded-lg shadow-md cursor-pointer ${selectAfter === photo.url ? "outline-4 outline-orange-400" : ""}`}
-                            loading="lazy"
+                            alt={`${data.room_type} photos`}
+                            className={`h-40 w-80 ${selectAfter === photo.url ? "outline-4 outline-orange-400" : ""}`}
                             onClick={() => setSelectAfter(photo.url)}
                           />
-                        </div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
                   </div>
-                ),
-              )
+                </div>
+              ))
             )}
           </div>
         </div>

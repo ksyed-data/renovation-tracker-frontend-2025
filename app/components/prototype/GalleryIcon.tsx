@@ -1,6 +1,5 @@
 import React from "react";
 import type { PhotoListing } from "~/components/types/PhotoListing";
-import { Spinner } from "./Spinner";
 
 type RoomGallerySectionProps = {
   groupedPhotos: Record<string, PhotoListing[]>;

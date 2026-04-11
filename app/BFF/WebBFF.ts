@@ -67,7 +67,7 @@ export async function ReadAndClassifyPhoto(
   if (photoDetail.length > 0 && photoDetail[0].room_type) {
     return photoDetail;
   }
-  await Promise.all(photoDetail.map((photo) => ClassifyPhoto(photo.photo_id)));
+  await ClassifyPhoto(id);
   photoDetail = await ReadListingPhotos(id);
 
   return photoDetail;
@@ -207,10 +207,10 @@ export async function ReadRenovation(
   }
 }
 //classify photo
-export async function ClassifyPhoto(photoId: number) {
+export async function ClassifyPhoto(listingId: number) {
   try {
-    await AxiosInstance.put("/photos/inference", null, {
-      params: { photo_id: photoId },
+    await AxiosInstance.put("/photos/inferenceAll", null, {
+      params: { listing_id: listingId },
     });
   } catch (error) {
     console.error("Photo Classify request failed:", error);
