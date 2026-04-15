@@ -18,7 +18,6 @@ import {
   getRenovatedRoom,
   groupPhotosByRoom,
   normalizeRenovation,
-  normalizeRoomName,
 } from "~/UtilityFunctions/HelperFunction";
 import { Gallery } from "../prototype/Gallery";
 import { BannerGallery } from "../prototype/BannerGallery";
@@ -150,7 +149,6 @@ export const BeforeAfter = () => {
       setGroupedPhotos(grouped);
       setGalleryLoading(false);
 
-      console.log(groupedComparePhoto);
     };
 
     fetchData();

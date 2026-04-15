@@ -19,10 +19,10 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
   loading,
 }) => {
   const [selectBefore, setSelectBefore] = useState<string>(
-    "https://cdn.vectorstock.com/i/1000v/27/88/select-image-vector-10832788.jpg",
+    "https://images.homes.com/listings/211/3294082324-92648533/1708-s-meadow-st-richmond-va-54.jpg",
   );
   const [selectAfter, setSelectAfter] = useState<string>(
-    "https://cdn.vectorstock.com/i/1000v/27/88/select-image-vector-10832788.jpg",
+    "https://images.homes.com/listings/211/6656310684-949374812/1708-s-meadow-st-richmond-va-9.jpg",
   );
 
   if (loading) {
@@ -53,7 +53,7 @@ export const CompareSlider: React.FC<RoomGallerySectionProps> = ({
               After Images
             </h2>
           </div>
-          <div className="overflow-y-auto w-300 h-300">
+          <div className="overflow-y-auto w-300 h-200">
             {groupedComparePhotos.length === 0 ||
             groupedComparePhotos.every(
               (data) => data.before.length === 0 && data.after.length === 0,
