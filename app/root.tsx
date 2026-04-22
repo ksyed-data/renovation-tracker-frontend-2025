@@ -6,6 +6,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import Modal from "react-modal";
+
+Modal.setAppElement('#app');
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -33,7 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div id="app">
+          {children}
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>

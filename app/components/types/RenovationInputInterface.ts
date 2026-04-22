@@ -4,5 +4,8 @@ export interface RenovationInputInterface {
   kitchen: boolean,
   living_room: boolean,
   bedroom: boolean,
+  hallway: boolean,
+  home_exterior: boolean,
+  dining_room: boolean,
   basement: boolean
 }

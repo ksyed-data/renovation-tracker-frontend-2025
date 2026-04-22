@@ -38,6 +38,9 @@ export function BuildRenovationListing(
     kitchen: getRenovated("kitchen"),
     living_room: getRenovated("living_room"),
     bedroom: getRenovated("bedroom"),
+    hallway: getRenovated("hallway"),
+    home_exterior: getRenovated("home_exterior"),
+    dining_room: getRenovated("dining_room"),
     basement: getRenovated("basement"),
   };
 }
